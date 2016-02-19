@@ -1,9 +1,9 @@
-System.register("index", ["angular2/core", "angular2/platform/browser", "jeremy-walton-github-io"], function($__export) {
+System.register("index", ["angular2/core", "angular2/platform/browser", "main-app"], function($__export) {
   "use strict";
   var Component,
       View,
       bootstrap,
-      JeremyWaltonGithubIo,
+      MainApp,
       Main;
   return {
     setters: [function($__m) {
@@ -12,7 +12,7 @@ System.register("index", ["angular2/core", "angular2/platform/browser", "jeremy-
     }, function($__m) {
       bootstrap = $__m.bootstrap;
     }, function($__m) {
-      JeremyWaltonGithubIo = $__m.JeremyWaltonGithubIo;
+      MainApp = $__m.MainApp;
     }],
     execute: function() {
       Main = function() {
@@ -21,8 +21,8 @@ System.register("index", ["angular2/core", "angular2/platform/browser", "jeremy-
       }();
       Object.defineProperty(Main, "annotations", {get: function() {
           return [new Component({selector: 'main'}), new View({
-            directives: [JeremyWaltonGithubIo],
-            template: "\n    <jeremy-walton-github-io></jeremy-walton-github-io>\n  "
+            directives: [MainApp],
+            template: "\n    <main-app></main-app>\n  "
           })];
         }});
       bootstrap(Main);

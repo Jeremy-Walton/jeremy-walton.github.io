@@ -1,15 +1,15 @@
 import {Component, View} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
-import {JeremyWaltonGithubIo} from 'jeremy-walton-github-io';
+import {MainApp} from 'main-app';
 
 @Component({
   selector: 'main'
 })
 
 @View({
-  directives: [JeremyWaltonGithubIo],
+  directives: [MainApp],
   template: `
-    <jeremy-walton-github-io></jeremy-walton-github-io>
+    <main-app></main-app>
   `
 })
 
