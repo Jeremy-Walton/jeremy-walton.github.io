@@ -1,4 +1,4 @@
-[RSVP](/) | Details
+[Home](/) | Details
 
 ### When
 September 1-4
