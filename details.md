@@ -1,10 +1,10 @@
-[Home](/) | Details
+[Home](/) | Details | [Schedule](/schedule)
 
 ### When
 September 1-4
 
 ### Check in
-Friday 5-7 pm
+Friday 5-7pm
 
 ### Check out
 Monday 11am.
@@ -13,10 +13,20 @@ Monday 11am.
 Daily Teaching, personal, group devotions, shenanigans and other activities
 
 ### Cost
-Cost TBD based on food purchase and a couple of other costs. Should be under $50. Financial help available, if needed.
+$45 for food and lodging (keep in mind that you will also need to chip in to pay whoever you drive with for gas).
+Financial help available if needed. Contact Daniel Noel at **(919) 696-7734**.
 
 ### Lodging
-Lodging and food provided. Carpooling will occur.
+Several bedrooms set-up with beds and floor space. Sleeping arrangements will be finalized once we have a firm registration list. Men and women on separate ends of long hall.
+
+### Travel Details
+Most people are carpooling together. We will work out rides closer to the retreat
+
+### Meals
+Meals are being provided from Saturday Breakfast - Monday breakfast.
+
+### Who is going?
+20-30 young adults from SGC apex
 
 ### Address
 Cedar Grove Farm Rd Machipongo, VA 23405
