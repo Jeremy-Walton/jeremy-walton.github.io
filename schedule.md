@@ -1,50 +1,64 @@
 [Home](/) | [Details](/details) | Schedule
 
-## Schedule
+<div class='schedule-container'>
+  <div class='schedule'>
+    <h2>Schedule</h2>
 
-### Friday (Sept. 1)
+    <h3>Friday (Sept. 1)</h3>
 
-* **6:00-7:30pm:** Arrival.
-* **6:00-8:00pm:** Check in and get settled.
-* **8:00pm:** Welcome & Family Groups
-* **8:15pm:** Session 1
-* **9:30pm:**  Free time
-* **10:30pm:** Quiet upstairs
-* **12:00pm:** Lights out
+    <p><strong>6:00-8:00pm</strong> Arrival, Check in and get settled.</p>
+    <p><strong>8:00pm</strong> Welcome/Team Games.</p>
+    <p><strong>8:15pm</strong> Worship.</p>
+    <p><strong>8:45pm</strong> Announcements.</p>
+    <p><strong>8:50-9:30pm</strong> Teaching session 1.</p>
+    <p><strong>9:30pm</strong> Devotional groups talk about session 1 and goals.</p>
+    <p><strong>10:00pm</strong> Free Time.</p>
+    <p><strong>11:45pm</strong> Quiet/Lights out.</p>
 
-### Saturday (Sept. 2)
+    <h3>Saturday (Sept. 2)</h3>
 
-* **7:30am:** Breakfast
-* **8:00am:** Group Devotions
-* **8:45am:**  Family group competition
-* **9:15am:** Session 2
-* **10:30am:** Coffee and family group discussion
-* **12:00pm:** Lunch
-* **12:30-5:30pm:** Free time
-* **5:30pm:** Dinner
-* **6:30pm:** Worship
-* **7:15pm:** Sessions #3
-* **10:30pm:** Quiet upstairs
-* **12:00pm:** Lights out
+    <p><strong>7:30am</strong> Breakfast.</p>
+    <p><strong>8:00am</strong> Individual Devotions.</p>
+    <p><strong>8:45am</strong> Worship.</p>
+    <p><strong>9:15am</strong> Team Activity.</p>
+    <p><strong>9:30am</strong> Teaching Session 2.</p>
+    <p><strong>10:30am</strong> Coffee and group discussion of devotion and teaching.</p>
+    <p><strong>11:00am-12:00pm</strong> Free time and lunch prep.</p>
+    <p><strong>12:00pm</strong> Lunch.</p>
+    <p><strong>12:30-5:30pm</strong> Free time and lunch clean up.</p>
+    <p><strong>5:30pm</strong> Dinner prep.</p>
+    <p><strong>6:00pm</strong> Dinner.</p>
+    <p><strong>6:45pm</strong> Announcements.</p>
+    <p><strong>7:00pm</strong> Worship.</p>
+    <p><strong>8:00pm</strong> Teaching session 3.</p>
 
-### Sunday (Sept. 3)
+    <h3>Sunday (Sept. 3)</h3>
 
-* **7:30am:** Breakfast
-* **8:00am:** Group Devotions
-* **8:45am:**  Family group games
-* **9:15am:** Session 4
-* **10:30am:** Coffee and family group discussion
-* **12:00pm:**  Lunch
-* **12:30-5:30pm:** Free time
-* **5:30pm:** Dinner
-* **6:30pm:** Sessions 5
-* **10:30pm:** Quiet upstairs
-* **12:00pm:** Lights out
+    <p><strong>7:30am</strong> Breakfast.</p>
+    <p><strong>8:00am</strong> Individuals Devotions.</p>
+    <p><strong>8:45am</strong> Worship.</p>
+    <p><strong>9:15am</strong> Team activity.</p>
+    <p><strong>9:30am</strong> Teaching session 4.</p>
+    <p><strong>10:30am</strong> Coffee and group discussion of devotion and teaching.</p>
+    <p><strong>11:00am-12:00pm</strong> Free time and lunch prep.</p>
+    <p><strong>12:00pm</strong> Lunch.</p>
+    <p><strong>12:30-5:30pm</strong> Free time and lunch clean up.</p>
+    <p><strong>5:30pm</strong> Dinner prep.</p>
+    <p><strong>6:00pm</strong> Dinner.</p>
+    <p><strong>7:00pm</strong> Worship.</p>
+    <p><strong>8:00pm</strong> Teaching session 5.</p>
 
-### Monday (Sept. 4)
-* **7:30am:** Breakfast
-* **8:00am:** Individual Devotions
-* **8:45am:** Team activities
-* **9:15am:** Session 6
-* **10:30am:** Clean and pack
-* **11:30am:** Leave
+    <h3>Monday (Sept. 4)</h3>
+    <p><strong>7:30am</strong> Breakfast.</p>
+    <p><strong>8:00am</strong> Individual Devotions.</p>
+    <p><strong>8:45am</strong> Team Activity.</p>
+    <p><strong>9:15am</strong> Worship.</p>
+    <p><strong>9:30am</strong> Teaching session 6.</p>
+    <p><strong>10:30am</strong> Clean and pack.</p>
+  </div>
+  <div class='playlist'>
+    <h2>OFFICIAL RETREAT PLAYLIST</h2>
+
+    <iframe src="https://open.spotify.com/embed/user/128654393/playlist/393dWEZwMhzye5R7Yekd5d" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  </div>
+</div>

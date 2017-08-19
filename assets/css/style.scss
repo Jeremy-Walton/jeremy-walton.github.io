@@ -37,3 +37,17 @@
 .registration-link a {
   font-size: 3em;
 }
+
+.schedule-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .schedule {
+    max-width: 25em;
+  }
+
+  .playlist {
+    text-align: center;
+  }
+}
