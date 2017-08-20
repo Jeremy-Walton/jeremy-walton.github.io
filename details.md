@@ -10,7 +10,7 @@ Friday 5-7pm
 Monday 11am.
 
 ### What
-Daily Teaching, personal, group devotions, shenanigans and other activities
+Daily Teaching, Personal group devotions, shenanigans and other activities
 
 ### Cost
 $45 for food and lodging (keep in mind that you will also need to chip in to pay whoever you drive with for gas).
