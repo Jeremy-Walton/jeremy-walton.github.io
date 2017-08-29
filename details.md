@@ -1,4 +1,4 @@
-[Home](/) | Details | [Schedule](/schedule)
+[Home](/) | Details | [Schedule](/schedule) | [Packing List](/packing-list)
 
 ### When
 September 1-4

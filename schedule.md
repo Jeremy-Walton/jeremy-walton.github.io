@@ -1,4 +1,4 @@
-[Home](/) | [Details](/details) | Schedule
+[Home](/) | [Details](/details) | Schedule | [Packing List](/packing-list)
 
 <div class='schedule-container'>
   <div class='schedule'>
