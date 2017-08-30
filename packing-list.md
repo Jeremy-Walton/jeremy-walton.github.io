@@ -17,3 +17,4 @@
     - It's very likely to be wet outside. Bring extra clothes.
     - Bag for dirty clothes
     - Active wear (sports clothes)
+- Coffee mug. Bring one if you want coffee
