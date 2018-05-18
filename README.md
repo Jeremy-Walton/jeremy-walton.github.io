@@ -1,4 +1,2 @@
 # jeremy-walton.github.io
-YA Retreat RSPV
-
-Simple page for Event
+Home page for my projects
