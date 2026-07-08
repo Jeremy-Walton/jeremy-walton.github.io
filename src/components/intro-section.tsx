@@ -35,9 +35,9 @@ export function IntroSection() {
     <header data-intro className="max-w-[65ch]">
       <h1
         style={{ "--i": 0 } as CSSProperties}
-        className="text-[clamp(1.875rem,1.5rem+1.7vw,2.75rem)] font-semibold tracking-[-0.02em] text-foreground"
+        className="font-serif text-[clamp(2rem,1.5rem+2vw,3.25rem)] font-bold leading-[1.05] tracking-[-0.01em] text-foreground"
       >
-        Jeremy Walton
+        Jeremy <span className="italic text-primary">Walton</span>
       </h1>
       <p
         style={{ "--i": 1 } as CSSProperties}
