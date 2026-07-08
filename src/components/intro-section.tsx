@@ -1,4 +1,5 @@
 import { useIcon, type IconName } from "@/lib/icon-context";
+import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
 
 interface ContactLink {
@@ -18,15 +19,16 @@ function ContactIcon({ contact }: { contact: ContactLink }) {
   const Icon = useIcon(contact.icon);
   const external = !contact.href.startsWith("mailto:");
   return (
-    <a
-      href={contact.href}
-      aria-label={contact.label}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors duration-150 hover:bg-hover hover:text-primary focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[color:var(--ring)]"
-    >
-      <Icon size={19} strokeWidth={1.5} />
-    </a>
+    <Button asChild variant="ghost" size="icon-lg" aria-label={contact.label}>
+      <a
+        href={contact.href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noreferrer" : undefined}
+        className="rounded-full text-muted-foreground hover:text-primary focus-visible:text-primary"
+      >
+        <Icon size={20} strokeWidth={1.5} />
+      </a>
+    </Button>
   );
 }
 

@@ -1,4 +1,6 @@
+import { Fragment } from "react";
 import { useIcon } from "@/lib/icon-context";
+import { Separator } from "@/components/ui/separator";
 import type { Project } from "@/data/types";
 import projects from "@/data/projects.json";
 
@@ -9,7 +11,7 @@ function ProjectRow({ project, index }: { project: Project; index: number }) {
       href={project.url}
       target="_blank"
       rel="noreferrer"
-      className="group flex flex-col gap-1.5 border-b border-border py-7 first:pt-0 last:border-none focus-visible:outline-none md:flex-row md:items-center md:gap-6"
+      className="group flex flex-col gap-1.5 py-7 first:pt-0 focus-visible:outline-none md:flex-row md:items-center md:gap-6"
     >
       <div className="flex items-start justify-between gap-4 md:contents">
         <div className="flex items-start gap-4 md:contents">
@@ -41,7 +43,10 @@ export function ProjectList() {
       </h2>
       <div className="mt-6">
         {(projects as Project[]).map((project, index) => (
-          <ProjectRow key={project.title} project={project} index={index} />
+          <Fragment key={project.title}>
+            {index > 0 && <Separator />}
+            <ProjectRow project={project} index={index} />
+          </Fragment>
         ))}
       </div>
     </section>

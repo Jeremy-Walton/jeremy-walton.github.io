@@ -1,43 +1,29 @@
+import { Fragment } from "react";
 import { useIcon } from "@/lib/icon-context";
-import type { ReadingItem } from "@/data/types";
+import { Badge, type BadgeColor } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import type { Category, ReadingItem } from "@/data/types";
 import reading from "@/data/reading.json";
 
-// Full-palette category tags: three distinct hues, each with real semantic
-// meaning (kind of source), not decoration.
-type Category = "Article" | "Repo" | "Guide";
-
-const categoryStyle: Record<Category, string> = {
-  Article: "bg-[oklch(0.93_0.045_248)] text-[oklch(0.34_0.09_248)] dark:bg-[oklch(0.30_0.06_248)] dark:text-[oklch(0.82_0.08_248)]",
-  Guide: "bg-[oklch(0.92_0.05_70)] text-[oklch(0.38_0.10_60)] dark:bg-[oklch(0.30_0.06_65)] dark:text-[oklch(0.82_0.09_70)]",
-  Repo: "bg-[oklch(0.93_0.045_340)] text-[oklch(0.40_0.10_340)] dark:bg-[oklch(0.30_0.06_340)] dark:text-[oklch(0.82_0.08_340)]",
+const categoryColor: Record<Category, BadgeColor> = {
+  UI: "blue",
+  AI: "green",
+  CSS: "purple",
+  Rails: "red",
 };
-
-function categoryFor(source: string): Category {
-  if (source.toLowerCase().includes("github")) return "Repo";
-  if (source === "Code with Jason") return "Guide";
-  return "Article";
-}
-
-function Tag({ category }: { category: Category }) {
-  return (
-    <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium tracking-wide ${categoryStyle[category]}`}>
-      {category}
-    </span>
-  );
-}
 
 function ReadingRow({ item }: { item: ReadingItem }) {
   const ArrowIcon = useIcon("arrow-up-right");
-  const category = categoryFor(item.source);
+
   return (
     <a
       href={item.url}
       target="_blank"
       rel="noreferrer"
-      className="group block border-b border-border py-6 first:pt-0 last:border-none focus-visible:outline-none"
+      className="group block py-6 first:pt-0 focus-visible:outline-none"
     >
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
-        <Tag category={category} />
+        <Badge color={categoryColor[item.category]}>{item.category}</Badge>
         <h3 className="font-medium text-foreground transition-colors duration-150 group-hover:text-primary group-focus-visible:text-primary">
           {item.title}
         </h3>
@@ -64,8 +50,11 @@ export function ReadingList() {
         Reading List
       </h2>
       <div className="mt-6">
-        {(reading as ReadingItem[]).map((item) => (
-          <ReadingRow key={item.url} item={item} />
+        {(reading as ReadingItem[]).map((item, index) => (
+          <Fragment key={item.url}>
+            {index > 0 && <Separator />}
+            <ReadingRow item={item} />
+          </Fragment>
         ))}
       </div>
     </section>
