@@ -9,7 +9,7 @@ function App() {
       <div className="fixed top-5 right-5 z-10 md:top-8 md:right-8">
         <ThemeToggle />
       </div>
-      <main className="mx-auto max-w-2xl px-6 py-20 md:py-28">
+      <main className="mx-auto max-w-2xl px-6 py-[clamp(5rem,4rem+3vw,7rem)]">
         <IntroSection />
         <ProjectList />
         <ReadingList />

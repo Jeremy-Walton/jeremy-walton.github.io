@@ -59,7 +59,7 @@ function ReadingRow({ item }: { item: ReadingItem }) {
 
 export function ReadingList() {
   return (
-    <section aria-labelledby="reading-heading" className="mt-24 mb-24 md:mt-32 md:mb-32">
+    <section aria-labelledby="reading-heading" className="mt-[clamp(6rem,5rem+3vw,8rem)] mb-[clamp(6rem,5rem+3vw,8rem)]">
       <h2 id="reading-heading" className="text-2xl font-semibold tracking-tight text-foreground md:text-[1.75rem]">
         Reading List
       </h2>
