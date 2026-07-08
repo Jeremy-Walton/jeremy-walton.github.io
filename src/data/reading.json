@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Details that make interfaces feel better",
+    "url": "https://interfaces.dev/magazine/issues/details-that-make-interfaces-feel-better",
+    "source": "interfaces.dev"
+  },
+  {
+    "title": "Agents with Taste",
+    "url": "https://emilkowal.ski/ui/agents-with-taste",
+    "source": "emilkowal.ski"
+  },
+  {
+    "title": "Modern CSS theming",
+    "url": "https://una.im/modern-css-theming",
+    "source": "una.im"
+  },
+  {
+    "title": "How I keep my Rails controllers organized",
+    "url": "https://www.codewithjason.com/keep-rails-controllers-organized/",
+    "source": "Code with Jason"
+  },
+  {
+    "title": "Fizzy",
+    "url": "https://github.com/basecamp/fizzy",
+    "source": "GitHub — Basecamp",
+    "note": "Open source kanban tool built by the creators of Rails. Great for code organization and implementation reference."
+  }
+]
