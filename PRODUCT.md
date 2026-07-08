@@ -19,6 +19,7 @@ A lightweight personal hub: a short bio, a list of projects, and a curated readi
 References:
 - [una.im](https://una.im/) — the clean intro treatment and socials placed right up top, immediately orienting.
 - [emilkowal.ski](https://emilkowal.ski/) — the simplicity is close to right, but leans too spare; this site should carry a bit more warmth/texture than pure minimalism.
+- [interfaces.dev](https://interfaces.dev/) — editorial character on top of a mostly-neutral base: a mixed serif/italic display headline, one confident bright-accent "marker highlight" around a key phrase, colorful abstract module thumbnails against otherwise neutral chrome, rounded pill buttons, numbered issue badges. The source of the "more character, a splash of color" direction — not a wholesale copy of its palette.
 
 ## Anti-references
 
@@ -29,7 +30,7 @@ Corporate resume/portfolio sites — anything that reads like it's optimized for
 - **Calm over loud** — quiet confidence; no shouting for attention, no hype-driven layout tropes.
 - **Warmth without gloss** — approachable and human, but with real craft and texture, not corporate polish.
 - **Orient immediately** — take the cue from una.im: intro and contact/socials surfaced early, no scroll-hunting to find out who this is.
-- **Simplicity with texture** — closer to emilkowal.ski's restraint than to a busy portfolio, but with enough personality (color, type, motion) that it doesn't feel bare.
+- **Simplicity with texture, now with character** — closer to emilkowal.ski's restraint than to a busy portfolio, but per interfaces.dev, character and a real splash of color are welcome on top of that restraint, not in tension with it.
 - **No performance for strangers** — every design decision should serve friends/peers/future-self, not an imagined recruiter audience.
 
 ## Accessibility & Inclusion

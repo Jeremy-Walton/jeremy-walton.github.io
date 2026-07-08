@@ -51,6 +51,11 @@ import {
   Pencil as PhPencil,
   SkipForward as PhSkipForward,
   ArrowElbowDownRight as PhArrowElbowDownRight,
+  GithubLogo as PhGithubLogo,
+  LinkedinLogo as PhLinkedinLogo,
+  XLogo as PhXLogo,
+  EnvelopeSimple as PhEnvelopeSimple,
+  ArrowUpRight as PhArrowUpRight,
 } from "@phosphor-icons/react";
 
 // ── Types ───────────────────────────────────────────────────
@@ -76,7 +81,8 @@ export type IconName =
   | "image" | "link" | "check" | "rotate-ccw"
   | "play" | "pause" | "pipette"
   | "home" | "message-circle" | "inbox"
-  | "pencil" | "skip-forward" | "corner-down-right";
+  | "pencil" | "skip-forward" | "corner-down-right"
+  | "github" | "linkedin" | "x-logo" | "envelope-simple" | "arrow-up-right";
 
 export const iconLibraryOrder: IconLibrary[] = ["phosphor"];
 
@@ -146,6 +152,11 @@ const phosphorMap: Record<IconName, IconComponent> = {
   "pencil": phosphor(PhPencil),
   "skip-forward": phosphor(PhSkipForward),
   "corner-down-right": phosphor(PhArrowElbowDownRight),
+  "github": phosphor(PhGithubLogo),
+  "linkedin": phosphor(PhLinkedinLogo),
+  "x-logo": phosphor(PhXLogo),
+  "envelope-simple": phosphor(PhEnvelopeSimple),
+  "arrow-up-right": phosphor(PhArrowUpRight),
 };
 
 // ── Unified Map ─────────────────────────────────────────────
