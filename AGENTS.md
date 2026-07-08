@@ -13,3 +13,7 @@ Pre-implementation. No source code, build tooling, or dependencies exist yet.
 See @docs/plans/PRD.md for product requirements and @docs/plans/TECHNICAL_DESIGN.md for the tech stack and implementation details.
 
 Once the project is scaffolded, update this file with real build/lint/test commands and any architecture that emerges across multiple files.
+
+## Design Context
+
+See @PRODUCT.md for register, audience, brand personality, and design principles; see @DESIGN.md for the visual system (color, typography, motion). DESIGN.md is currently a seed (pre-implementation) — re-run `/impeccable document` once real UI code exists to capture actual tokens.
