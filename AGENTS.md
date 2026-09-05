@@ -1,19 +1,15 @@
 # AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 Personal site for Jeremy Walton, deployed to GitHub Pages under the custom domain in `CNAME` (www.launchtabs.com — do not remove).
-
-## Status
-
-Pre-implementation. No source code, build tooling, or dependencies exist yet.
 
 ## Requirements
 
-See @docs/plans/PRD.md for product requirements and @docs/plans/TECHNICAL_DESIGN.md for the tech stack and implementation details.
+- `docs/PRD.md` — product requirements (goals, site structure, features, scope). Read it when scoping a new feature or unsure what's in/out of scope.
+- `docs/TECHNICAL_DESIGN.md` — tech stack and implementation details. Read it when making a stack/tooling decision.
 
-Once the project is scaffolded, update this file with real build/lint/test commands and any architecture that emerges across multiple files.
+Ensure these files are updated if any product level decisions or changes are made or if any architectural decisions or changes are made.
 
 ## Design Context
 
-See @PRODUCT.md for register, audience, brand personality, and design principles; see @DESIGN.md for the visual system (color, typography, motion). DESIGN.md is currently a seed (pre-implementation) — re-run `/impeccable document` once real UI code exists to capture actual tokens.
+- `docs/PRODUCT.md` — register, audience, brand personality, design principles. Read it before any visual/UX decision.
+- `docs/DESIGN.md` — the visual system: color tokens, typography, motion rules. Read it before touching styling, colors, or components.
