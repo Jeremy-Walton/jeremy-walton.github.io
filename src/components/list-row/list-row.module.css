@@ -1,0 +1,77 @@
+.list-row {
+  display: block;
+  padding-block: calc(var(--spacing) * 7);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  .list-row__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: calc(var(--spacing) * 4);
+  }
+
+  .list-row__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: calc(var(--spacing) * 3);
+    row-gap: var(--spacing);
+  }
+
+  .list-row__leading {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    line-height: var(--text-xs--line-height);
+    color: var(--primary);
+  }
+
+  .list-row__title {
+    font-weight: 500;
+    color: var(--foreground);
+    transition: color 150ms;
+  }
+
+  .list-row__source {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    color: var(--muted-foreground);
+  }
+
+  .list-row__arrow {
+    flex-shrink: 0;
+    margin-top: var(--spacing);
+    color: var(--muted-foreground);
+    transition: all 400ms ease-out;
+  }
+
+  .list-row__description {
+    max-width: 58ch;
+    margin-top: calc(var(--spacing) * 1.5);
+    font-size: 15px;
+    line-height: var(--leading-relaxed);
+    color: var(--muted-foreground);
+
+    /* Clears the leading index so the text hangs under the title, not the number. */
+    &.list-row__description--indented {
+      padding-left: 1.875rem;
+    }
+  }
+
+  &:hover .list-row__title,
+  &:focus-visible .list-row__title {
+    color: var(--primary);
+  }
+
+  &:hover .list-row__arrow {
+    color: var(--primary);
+    transform: scale(1.25);
+  }
+}
