@@ -27,7 +27,7 @@ function ProjectList() {
 
 function ReadingList() {
   return (
-    <ListSection title="What I'm reading" variant="underlined">
+    <ListSection title="What I'm reading" underlined>
       {(reading as ReadingItem[]).map((item) => (
         <ListRow
           key={item.url}
