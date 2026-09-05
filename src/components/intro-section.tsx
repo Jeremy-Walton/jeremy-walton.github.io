@@ -34,15 +34,17 @@ function ContactIcon({ contact }: { contact: ContactLink }) {
 
 export function IntroSection() {
   return (
-    <header data-intro className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
+    <header className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
       <div>
         <h1
+          data-intro-item
           style={{ "--i": 0 } as CSSProperties}
           className="font-serif text-[clamp(2.5rem,1.75rem+3vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.01em] text-foreground"
         >
           Jeremy <span className="italic text-primary">Walton</span>
         </h1>
         <p
+          data-intro-item
           style={{ "--i": 1 } as CSSProperties}
           className="mt-5 max-w-[65ch] text-lg leading-relaxed text-foreground/85 md:text-xl"
         >
@@ -58,6 +60,7 @@ export function IntroSection() {
           building applications that solve business needs. I care about identifying real problems, architecting maintainable software solutions, and building delightful user experiences.
         </p>
         <div
+          data-intro-item
           style={{ "--i": 2 } as CSSProperties}
           className="mt-7 -ml-3 flex items-center gap-1"
         >
@@ -67,6 +70,7 @@ export function IntroSection() {
         </div>
       </div>
       <div
+        data-intro-item
         style={{ "--i": 1 } as CSSProperties}
         className="group mx-auto w-full max-w-72 [perspective:1000px] lg:mx-0"
       >

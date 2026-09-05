@@ -174,8 +174,10 @@
     }
 }
 
-/* Intro entrance: the one deliberate page-load moment. Each direct child of
-   [data-intro] rises in on its own beat via --i (set inline per element). */
+/* Intro entrance: the one deliberate page-load moment. Each [data-intro-item]
+   rises in on its own beat via --i (set inline per element). Marked per element
+   rather than by descent, so the grid wrapper the layout needs doesn't animate
+   itself and double up on the transform its children already run. */
 @keyframes intro-in {
   from {
     opacity: 0;
@@ -187,13 +189,13 @@
     }
 }
 
-[data-intro] > * {
+[data-intro-item] {
   animation: intro-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: calc(var(--i, 0) * 90ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-intro] > * {
+  [data-intro-item] {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
