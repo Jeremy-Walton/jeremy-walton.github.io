@@ -1,23 +1,24 @@
-import { useIcon, type IconName } from "@/lib/icon-context";
+import { GithubLogo, LinkedinLogo, XLogo } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
-import type { CSSProperties } from "react";
+import { Envelope } from "@/components/icons/envelope";
+import type { ComponentType, CSSProperties } from "react";
 import profilePhoto from "@/assets/profile-min.png";
 
 interface ContactLink {
   label: string;
   href: string;
-  icon: IconName;
+  Icon: ComponentType<{ size?: number; weight?: "light" }>;
 }
 
 const contacts: ContactLink[] = [
-  { label: "Email", href: "mailto:jeremy.patrick.walton@gmail.com", icon: "envelope-simple" },
-  { label: "GitHub", href: "https://github.com/Jeremy-Walton", icon: "github" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/jeremy-walton/", icon: "linkedin" },
-  { label: "X", href: "https://x.com/jeremywalton6th", icon: "x-logo" },
+  { label: "Email", href: "mailto:jeremy.patrick.walton@gmail.com", Icon: Envelope },
+  { label: "GitHub", href: "https://github.com/Jeremy-Walton", Icon: GithubLogo },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/jeremy-walton/", Icon: LinkedinLogo },
+  { label: "X", href: "https://x.com/jeremywalton6th", Icon: XLogo },
 ];
 
 function ContactIcon({ contact }: { contact: ContactLink }) {
-  const Icon = useIcon(contact.icon);
+  const { Icon } = contact;
   const external = !contact.href.startsWith("mailto:");
   return (
     <Button
@@ -26,7 +27,7 @@ function ContactIcon({ contact }: { contact: ContactLink }) {
       aria-label={contact.label}
       render={<a href={contact.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} />}
     >
-      <Icon size={20} strokeWidth={1.5} />
+      <Icon size={20} weight="light" />
     </Button>
   );
 }
