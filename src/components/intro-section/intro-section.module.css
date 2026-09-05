@@ -1,0 +1,65 @@
+.intro {
+  display: grid;
+  gap: calc(var(--spacing) * 10);
+
+  .intro__headline {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 1.75rem + 3vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--foreground);
+  }
+
+  .intro__surname {
+    font-style: italic;
+    color: var(--primary);
+  }
+
+  .intro__bio {
+    max-width: 65ch;
+    margin-top: calc(var(--spacing) * 5);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: color-mix(in oklab, var(--foreground) 85%, transparent);
+
+    @media (width >= 48rem) {
+      font-size: var(--text-xl);
+    }
+  }
+
+  .intro__bio-link {
+    text-decoration: underline;
+    transition: color 150ms;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  .intro__contacts {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing);
+    margin-top: calc(var(--spacing) * 7);
+    /* Pulls the row's first icon back so its glyph, not the button's padding,
+       lines up with the headline's left edge. */
+    margin-left: calc(var(--spacing) * -3);
+  }
+
+  .intro__photo {
+    width: 100%;
+    max-width: calc(var(--spacing) * 72);
+    margin-inline: auto;
+  }
+
+  @media (width >= 64rem) {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    gap: calc(var(--spacing) * 16);
+
+    .intro__photo {
+      margin-inline: 0;
+    }
+  }
+}
