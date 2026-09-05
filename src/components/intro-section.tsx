@@ -1,6 +1,7 @@
 import { useIcon, type IconName } from "@/lib/icon-context";
 import { Button } from "@/components/ui/button";
 import type { CSSProperties } from "react";
+import profilePhoto from "@/assets/profile-min.png";
 
 interface ContactLink {
   label: string;
@@ -32,26 +33,46 @@ function ContactIcon({ contact }: { contact: ContactLink }) {
 
 export function IntroSection() {
   return (
-    <header data-intro className="mx-auto max-w-[65ch] text-center">
-      <h1
-        style={{ "--i": 0 } as CSSProperties}
-        className="font-serif text-[clamp(2.5rem,1.75rem+3vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.01em] text-foreground"
-      >
-        Jeremy <span className="italic text-primary">Walton</span>
-      </h1>
-      <p
-        style={{ "--i": 1 } as CSSProperties}
-        className="mx-auto mt-5 max-w-[65ch] text-lg leading-relaxed text-foreground/85 md:text-xl"
-      >
-        Software Craftsman with over a decade of experience. I work at RoleModel Software building applications that solve business needs. I care about solving real problems, creating maintainable software, and building delightful user experiences.
-      </p>
+    <header data-intro className="grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:gap-16">
+      <div>
+        <h1
+          style={{ "--i": 0 } as CSSProperties}
+          className="font-serif text-[clamp(2.5rem,1.75rem+3vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.01em] text-foreground"
+        >
+          Jeremy <span className="italic text-primary">Walton</span>
+        </h1>
+        <p
+          style={{ "--i": 1 } as CSSProperties}
+          className="mt-5 max-w-[65ch] text-lg leading-relaxed text-foreground/85 md:text-xl"
+        >
+          Software Craftsman with over a decade of experience. I work at RoleModel Software building applications that solve business needs. I care about solving real problems, creating maintainable software, and building delightful user experiences.
+        </p>
+        <div
+          style={{ "--i": 2 } as CSSProperties}
+          className="mt-7 -ml-3 flex items-center gap-1"
+        >
+          {contacts.map((contact) => (
+            <ContactIcon key={contact.label} contact={contact} />
+          ))}
+        </div>
+      </div>
       <div
-        style={{ "--i": 2 } as CSSProperties}
-        className="mt-7 flex items-center justify-center gap-1"
+        style={{ "--i": 1 } as CSSProperties}
+        className="group mx-auto w-full max-w-72 [perspective:1000px] lg:mx-0"
       >
-        {contacts.map((contact) => (
-          <ContactIcon key={contact.label} contact={contact} />
-        ))}
+        <div className="relative aspect-square [transform-style:preserve-3d] transition-transform duration-1000 ease-out group-hover:[transform:rotateY(180deg)] motion-reduce:transition-none">
+          <img
+            src={profilePhoto}
+            alt="Jeremy Walton"
+            className="absolute inset-0 h-full w-full rounded-3xl object-cover grayscale [backface-visibility:hidden] dark:grayscale-0"
+          />
+          <img
+            src={profilePhoto}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full rounded-3xl object-cover [backface-visibility:hidden] [transform:rotateY(180deg)] dark:grayscale"
+          />
+        </div>
       </div>
     </header>
   );
