@@ -19,15 +19,13 @@ function ContactIcon({ contact }: { contact: ContactLink }) {
   const Icon = useIcon(contact.icon);
   const external = !contact.href.startsWith("mailto:");
   return (
-    <Button asChild variant="ghost" size="icon-lg" aria-label={contact.label}>
-      <a
-        href={contact.href}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noreferrer" : undefined}
-        className="rounded-full text-muted-foreground hover:text-primary focus-visible:text-primary"
-      >
-        <Icon size={20} strokeWidth={1.5} />
-      </a>
+    <Button
+      variant="ghost"
+      size="icon-lg"
+      aria-label={contact.label}
+      render={<a href={contact.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} />}
+    >
+      <Icon size={20} strokeWidth={1.5} />
     </Button>
   );
 }
@@ -45,10 +43,7 @@ export function IntroSection() {
         style={{ "--i": 1 } as CSSProperties}
         className="mt-5 text-lg leading-relaxed text-foreground/85 md:text-xl"
       >
-        Software craftsman with over a decade of experience. I work at RoleModel
-        Software building applications that solve business needs. I care about
-        front-end quality, making things maintainable, and building delightful
-        user experiences.
+        Software Craftsman with over a decade of experience. I work at RoleModel Software building applications that solve business needs. I care about solving real problems, creating maintainable software, and building delightful user experiences.
       </p>
       <div
         style={{ "--i": 2 } as CSSProperties}
