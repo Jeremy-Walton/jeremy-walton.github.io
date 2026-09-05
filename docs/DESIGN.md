@@ -103,7 +103,37 @@ Flat by default — depth comes from spacing, band background color, and the acc
 ### Named Rules
 **The Flat-By-Default Rule.** Surfaces sit flat at rest. Any elevation cue appears only as a direct response to interaction (hover, focus), never as passive decoration. Band color changes are not elevation — they're ground-plane changes, still flat, no shadow at the seam.
 
-## 6. Components
+## 6. CSS Modules
+
+Components whose styling outgrows utility classes get a `<component>.module.css` alongside them (see Button, Profile Photo). Two rules:
+
+**BEM names.** `.block`, `.block__element`, `.block__element--modifier`. In JSX, reach them with bracket access — `styles["flip-photo__card"]` — since the dashes rule out dot access.
+
+**Nest everything under the block.** One top-level rule per module. Elements nest inside the block, modifiers nest inside their element as `&.block__element--modifier`, and states, media queries, and `:global(.dark) &` nest inside whatever they modify. Native CSS nesting cannot join `&` to a suffix, so write the element's full class name (`.flip-photo__card`, not `&__card`) — that is a Sass feature and it will not compile here.
+
+```css
+.flip-photo {
+  perspective: 1000px;
+
+  .flip-photo__face {
+    backface-visibility: hidden;
+
+    &.flip-photo__face--front {
+      filter: grayscale(1);
+
+      :global(.dark) & {
+        filter: none;
+      }
+    }
+  }
+
+  &:hover .flip-photo__card {
+    transform: rotateY(180deg);
+  }
+}
+```
+
+## 7. Components
 
 ### Name / Display Headline
 - **Shape:** no container, plain text.
@@ -118,8 +148,8 @@ Flat by default — depth comes from spacing, band background color, and the acc
 - **Theme toggle animation:** the sun/moon icon's own hover choreography didn't fire from inside the `Button` + `AnimatePresence` wrapper (root cause not fully isolated). Fixed the same way as the row arrow (see List Row): `trigger="none"` on the icon, driven imperatively via a ref's `play()`/`stop()` from the Button's own `onMouseEnter`/`onMouseLeave`, instead of relying on the icon's built-in hover listener.
 
 ### Profile Photo
-- **Shape:** square, `rounded-3xl`, `object-cover`, sitting opposite the name/bio in the hero grid, capped at `max-w-72`. No border, no shadow — flat, per the Flat-By-Default Rule.
-- **Style:** one source image (`profile-min.png`), rendered twice as a 3D flip card (`perspective` on the wrapper, `preserve-3d` + `backface-visibility: hidden` on front/back faces, `rotateY(180deg)` on the back face and on hover). At rest: color in dark mode, black-and-white in light mode (CSS `grayscale`/`dark:grayscale-0`, not a second exported file). On hover: a 1000ms `rotateY` flip reveals the back face, which is always the *opposite* rendering of the front — grayscale flips to color, color flips to grayscale — regardless of theme. `prefers-reduced-motion` drops the transition duration so the swap is instant rather than animated; the flip itself (a hover-only, non-essential embellishment) still happens since it's the whole point of the interaction, just without the spin.
+- **Shape:** square, `var(--radius-3xl)` corners, `object-cover`, sitting opposite the name/bio in the hero grid, capped at `max-w-72`. No border, no shadow — flat, per the Flat-By-Default Rule.
+- **Style:** one source image (`profile-min.png`), rendered twice as a 3D flip card (`perspective` on the wrapper, `preserve-3d` + `backface-visibility: hidden` on front/back faces, `rotateY(180deg)` on the back face and on hover). Styling lives in `flip-photo.module.css` rather than utility classes, following the same rule as the Button component — the 3D transforms and the theme-dependent grayscale needed arbitrary-value utilities to express, which read worse than plain CSS. Dark mode hooks the global `.dark` class via `:global(.dark) &`. At rest: color in dark mode, black-and-white in light mode (CSS `grayscale`, not a second exported file). On hover: a 1000ms `rotateY` flip reveals the back face, which is always the *opposite* rendering of the front — grayscale flips to color, color flips to grayscale — regardless of theme. `prefers-reduced-motion` drops the transition duration so the swap is instant rather than animated; the flip itself (a hover-only, non-essential embellishment) still happens since it's the whole point of the interaction, just without the spin.
 
 ### Section Heading
 - **Copy:** "What I'm working on" (Projects) and "What I'm reading" (Reading List) — first-person and conversational rather than the generic list-noun labels, matching the "reads like a person" brand personality.
@@ -131,7 +161,7 @@ Flat by default — depth comes from spacing, band background color, and the acc
 - **Anatomy, all but title optional:** one line holds an optional mono index (Projects only: `01`, `02`…, in primary at full opacity), the title, and an inline mono source prefixed with "— " — all on the same line, wrapping together if the combination is long; an arrow icon (phosphor-animated's `arrow-square-out` — the closest match to the old plain arrow-up-right, since phosphor-animated doesn't have that exact glyph) sits right-aligned on that line. On row hover the arrow turns primary and scales to 125% over 400ms (`group-hover:scale-125`), while its own built-in slip-out animation plays — driven from the row, not the icon, via `useIconHover` (the icon is set `trigger="none"` so the whole row is the hover target, not just the glyph). 400ms is deliberately half the icon's 800ms choreography, so the growth finishes as the arrow reaches the top of its slip-out and doesn't keep growing on the way back. The icon's own motion is small on purpose — the scale is what makes the hover read, so the two shouldn't both be loud. A muted description/note paragraph follows below when present. Reading List rows have no index, so their content sits flush left instead of indented under one.
 - **Why no tags:** reading-list category badges (UI/AI/CSS/Rails, one hardcoded color per category) were tried and dropped — they didn't help a reader decide anything, and they were the one place the two lists' row shapes diverged. Source + title + optional description does the job.
 
-## 7. Do's and Don'ts
+## 8. Do's and Don'ts
 
 ### Do:
 - **Do** surface the intro and contact/social links early — orient the visitor immediately, the way una.im does.
