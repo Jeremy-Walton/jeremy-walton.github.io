@@ -7,8 +7,8 @@ Companion to @PRD.md — this covers the tech stack and implementation details n
 - **Framework**: React (SPA, no routing — single page)
 - **Language**: TypeScript
 - **Build tool**: Vite, static export deployed to GitHub Pages
-- **Styling**: Tailwind CSS, using its `dark:` variant for theming
-- **UI components**: [shadcn/ui](https://ui.shadcn.com/), built on Base UI primitives (shadcn's current default), with a custom theme configured at install time. Supplemented by the [Fluid Functionalism](https://www.fluidfunctionalism.com) registry, which distributes its own components on top of shadcn.
+- **Styling**: Tailwind CSS, using its `dark:` variant for theming. Utilities are the default; a CSS Module (`*.module.css`, plain CSS with native nesting) is used where a component has one fixed appearance and no variants for utilities to express — currently just `Button`. Modules still read the same design tokens from `index.css`, and reach dark mode via `:global(.dark) &` rather than the `dark:` variant.
+- **UI components**: [shadcn/ui](https://ui.shadcn.com/), built on Base UI primitives (shadcn's current default), with a custom theme configured at install time. Supplemented by the [Fluid Functionalism](https://www.fluidfunctionalism.com) registry, which distributes its own components on top of shadcn. Vendored shadcn components are trimmed to what this site actually uses rather than kept upstream-identical — `Button` carries one style and two sizes instead of the full variant matrix (see DESIGN.md § Contact Icons). The trade-off is accepted deliberately: re-running `shadcn add button` would overwrite the trimmed version, so re-diff it by hand if that ever happens.
 - **Testing**: Vitest for basic unit/component tests (e.g. theme toggle logic, data-file shape)
 - **Linting/formatting**: ESLint + Prettier
 - **Package manager**: npm

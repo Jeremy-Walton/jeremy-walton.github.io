@@ -18,13 +18,11 @@ function ContactIcon({ label, href, Icon }: ContactIconProps) {
   const external = !href.startsWith("mailto:");
   return (
     <Button
-      variant="ghost"
-      size="icon-lg"
       nativeButton={false}
       aria-label={label}
       render={<a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} />}
     >
-      <Icon size={20} weight="light" />
+      <Icon size={16} weight="light" />
     </Button>
   );
 }

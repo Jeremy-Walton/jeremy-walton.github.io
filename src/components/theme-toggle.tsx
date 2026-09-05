@@ -40,12 +40,9 @@ export function ThemeToggle() {
 
   return (
     <Button
-      variant="ghost"
-      size="icon-sm"
       onClick={toggleTheme}
       {...icon.hoverProps}
       aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
-      className="overflow-hidden"
     >
       <IconSwap swapKey={theme}>
         <Icon ref={icon.ref} trigger="none" size={16} weight="light" />
