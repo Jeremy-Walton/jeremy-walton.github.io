@@ -45,7 +45,16 @@ export function IntroSection() {
           style={{ "--i": 1 } as CSSProperties}
           className="mt-5 max-w-[65ch] text-lg leading-relaxed text-foreground/85 md:text-xl"
         >
-          Software Craftsman with over a decade of experience. I work at RoleModel Software building applications that solve business needs. I care about solving real problems, creating maintainable software, and building delightful user experiences.
+          Software Craftsman with over a decade of experience. I work at{" "}
+          <a
+            href="https://rolemodelsoftware.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="underline transition-colors duration-150 hover:text-primary"
+          >
+            RoleModel Software
+          </a>{" "}
+          building applications that solve business needs. I care about identifying real problems, architecting maintainable software solutions, and building delightful user experiences.
         </p>
         <div
           style={{ "--i": 2 } as CSSProperties}

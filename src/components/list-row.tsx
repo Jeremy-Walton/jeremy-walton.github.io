@@ -37,7 +37,7 @@ export function ListRow({ href, title, leading, source, description }: ListRowPr
           trigger="none"
           size={16}
           weight="light"
-          className="mt-1 shrink-0 text-muted-foreground transition-colors duration-150 group-hover:text-primary"
+          className="mt-1 shrink-0 text-muted-foreground transition-all duration-[400ms] ease-out group-hover:scale-125 group-hover:text-primary"
         />
       </div>
       {description && (
