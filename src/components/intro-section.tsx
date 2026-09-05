@@ -1,6 +1,7 @@
 import { GithubLogo, LinkedinLogo, XLogo } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { Envelope } from "@/components/icons/envelope";
+import { FlipPhoto } from "@/components/flip-photo";
 import type { ComponentType, CSSProperties } from "react";
 import profilePhoto from "@/assets/profile-min.png";
 
@@ -24,6 +25,7 @@ function ContactIcon({ contact }: { contact: ContactLink }) {
     <Button
       variant="ghost"
       size="icon-lg"
+      nativeButton={false}
       aria-label={contact.label}
       render={<a href={contact.href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} />}
     >
@@ -72,21 +74,9 @@ export function IntroSection() {
       <div
         data-intro-item
         style={{ "--i": 1 } as CSSProperties}
-        className="group mx-auto w-full max-w-72 [perspective:1000px] lg:mx-0"
+        className="mx-auto w-full max-w-72 lg:mx-0"
       >
-        <div className="relative aspect-square [transform-style:preserve-3d] transition-transform duration-1000 ease-out group-hover:[transform:rotateY(180deg)] motion-reduce:transition-none">
-          <img
-            src={profilePhoto}
-            alt="Jeremy Walton"
-            className="absolute inset-0 h-full w-full rounded-3xl object-cover grayscale [backface-visibility:hidden] dark:grayscale-0"
-          />
-          <img
-            src={profilePhoto}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full rounded-3xl object-cover [backface-visibility:hidden] [transform:rotateY(180deg)] dark:grayscale"
-          />
-        </div>
+        <FlipPhoto src={profilePhoto} alt="Jeremy Walton" />
       </div>
     </header>
   );
