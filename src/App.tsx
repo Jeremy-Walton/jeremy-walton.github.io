@@ -1,8 +1,45 @@
 import { IntroSection } from "@/components/intro-section";
-import { ProjectList } from "@/components/project-list";
-import { ReadingList } from "@/components/reading-list";
+import { ListRow } from "./components/list-row";
 import { SiteFooter } from "@/components/site-footer";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { ListSection } from "./components/list-section";
+
+import type { Project, ReadingItem } from "@/data/types";
+import projects from "@/data/projects.json";
+import reading from "@/data/reading.json";
+
+function ProjectList() {
+  return (
+    <ListSection title="What I'm working on">
+      {(projects as Project[]).map((project, index) => (
+        <ListRow
+          key={project.title}
+          href={project.url}
+          leading={String(index + 1).padStart(2, "0")}
+          title={project.title}
+          source={project.source}
+          description={project.description}
+        />
+      ))}
+    </ListSection>
+  );
+}
+
+function ReadingList() {
+  return (
+    <ListSection title="What I'm reading" variant="underlined">
+      {(reading as ReadingItem[]).map((item) => (
+        <ListRow
+          key={item.url}
+          href={item.url}
+          title={item.title}
+          source={item.source}
+          description={item.note}
+        />
+      ))}
+    </ListSection>
+  );
+}
 
 function App() {
   return (
