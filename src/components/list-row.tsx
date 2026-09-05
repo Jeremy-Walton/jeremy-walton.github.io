@@ -1,4 +1,6 @@
-import { useIcon } from "@/lib/icon-context";
+import { useRef } from "react";
+import { ArrowSquareOut } from "@/components/icons/arrow-square-out";
+import type { AnimatedIconHandle } from "@/components/icons/animated-icon";
 import { cn } from "@/lib/utils";
 
 interface ListRowProps {
@@ -10,7 +12,7 @@ interface ListRowProps {
 }
 
 export function ListRow({ href, title, leading, source, description }: ListRowProps) {
-  const ArrowIcon = useIcon("arrow-up-right");
+  const arrowRef = useRef<AnimatedIconHandle>(null);
   const indent = leading ? "pl-[1.875rem]" : "";
 
   return (
@@ -19,6 +21,8 @@ export function ListRow({ href, title, leading, source, description }: ListRowPr
       target="_blank"
       rel="noreferrer"
       className="group block py-7 first:pt-0 focus-visible:outline-none"
+      onMouseEnter={() => arrowRef.current?.play()}
+      onMouseLeave={() => arrowRef.current?.stop()}
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
@@ -28,10 +32,12 @@ export function ListRow({ href, title, leading, source, description }: ListRowPr
           </h3>
           {source && <span className="font-mono text-sm text-muted-foreground">— {source}</span>}
         </div>
-        <ArrowIcon
+        <ArrowSquareOut
+          ref={arrowRef}
+          trigger="none"
           size={16}
-          strokeWidth={1.5}
-          className="mt-1 shrink-0 text-muted-foreground transition-[transform,color] duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary"
+          weight="light"
+          className="mt-1 shrink-0 text-muted-foreground transition-colors duration-150 group-hover:text-primary"
         />
       </div>
       {description && (

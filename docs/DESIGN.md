@@ -112,6 +112,8 @@ Flat by default — depth comes from spacing, band background color, and the acc
 ### Contact Icons
 - **Shape:** 44×44px circular hit target (`rounded-full`).
 - **Style:** plain muted-foreground icon at rest; background fills `--hover`/`--active` and icon turns primary (navy) on hover/focus. No labels, no pill chrome.
+- **Icon source:** [phosphor-animated.com](https://phosphor-animated.com/) (hover-animated, MIT, installed as source via the shadcn CLI) for the envelope; the theme toggle's sun/moon also come from there. GitHub, LinkedIn, and X stay on plain `@phosphor-icons/react` — phosphor-animated has no brand logos, only generic icons.
+- **Theme toggle animation:** the sun/moon icon's own hover choreography didn't fire from inside the `Button` + `AnimatePresence` wrapper (root cause not fully isolated). Fixed the same way as the row arrow (see List Row): `trigger="none"` on the icon, driven imperatively via a ref's `play()`/`stop()` from the Button's own `onMouseEnter`/`onMouseLeave`, instead of relying on the icon's built-in hover listener.
 
 ### Profile Photo
 - **Shape:** square, `rounded-3xl`, `object-cover`, sitting opposite the name/bio in the hero grid, capped at `max-w-72`. No border, no shadow — flat, per the Flat-By-Default Rule.
@@ -124,7 +126,7 @@ Flat by default — depth comes from spacing, band background color, and the acc
 
 ### List Row (shared by Projects and Reading List)
 - **Shape:** full-width hairline row (`border-b border-border`), no card container, no side-stripe, no badge/tag. One shared component (`ListRow`) renders both lists so they can't drift apart.
-- **Anatomy, all but title optional:** one line holds an optional mono index (Projects only: `01`, `02`…, in primary at full opacity), the title, and an inline mono source prefixed with "— " — all on the same line, wrapping together if the combination is long; an arrow-up-right icon sits right-aligned on that line (nudges on hover). A muted description/note paragraph follows below when present. Reading List rows have no index, so their content sits flush left instead of indented under one.
+- **Anatomy, all but title optional:** one line holds an optional mono index (Projects only: `01`, `02`…, in primary at full opacity), the title, and an inline mono source prefixed with "— " — all on the same line, wrapping together if the combination is long; an arrow icon (phosphor-animated's `arrow-square-out` — the closest match to the old plain arrow-up-right, since phosphor-animated doesn't have that exact glyph) sits right-aligned on that line, turning primary on row hover (`group-hover:text-primary`) and playing its own built-in slip-out animation when the cursor is directly over it. The row no longer also nudges the icon via a CSS translate on hover — the icon's own animation already carries that motion, so the translate was dropped as redundant. A muted description/note paragraph follows below when present. Reading List rows have no index, so their content sits flush left instead of indented under one.
 - **Why no tags:** reading-list category badges (UI/AI/CSS/Rails, one hardcoded color per category) were tried and dropped — they didn't help a reader decide anything, and they were the one place the two lists' row shapes diverged. Source + title + optional description does the job.
 
 ## 7. Do's and Don'ts

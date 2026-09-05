@@ -2,6 +2,15 @@
 
 import type { ComponentType } from "react";
 
+// ── Phosphor Animated (phosphor-animated.com) ────────────────
+// Hover-animated icons, installed as source via the shadcn CLI. Used only
+// where an animated version exists; phosphor-animated has no brand logos,
+// so GitHub/LinkedIn/X keep coming from the plain @phosphor-icons/react set.
+import { Sun as AnimatedSun } from "@/components/icons/sun";
+import { Moon as AnimatedMoon } from "@/components/icons/moon";
+import { Envelope as AnimatedEnvelope } from "@/components/icons/envelope";
+import { ArrowSquareOut as AnimatedArrowSquareOut } from "@/components/icons/arrow-square-out";
+
 // ── Phosphor ────────────────────────────────────────────────
 import {
   CaretRight as PhCaretRight,
@@ -12,8 +21,6 @@ import {
   List as PhList,
   DotOutline as PhDotOutline,
   Monitor as PhMonitor,
-  Sun as PhSun,
-  Moon as PhMoon,
   Rectangle as PhRectangle,
   Circle as PhCircle,
   Books as PhBooks,
@@ -54,8 +61,6 @@ import {
   GithubLogo as PhGithubLogo,
   LinkedinLogo as PhLinkedinLogo,
   XLogo as PhXLogo,
-  EnvelopeSimple as PhEnvelopeSimple,
-  ArrowUpRight as PhArrowUpRight,
 } from "@phosphor-icons/react";
 
 // ── Types ───────────────────────────────────────────────────
@@ -102,6 +107,15 @@ function phosphor(Icon: ComponentType<{ size?: number; weight?: PhosphorWeight; 
   };
 }
 
+// Phosphor Animated: same weight prop shape as static Phosphor, plus its own
+// hover-triggered choreography — the adapter only needs to resolve weight.
+function animated(Icon: ComponentType<{ size?: number; weight?: PhosphorWeight; className?: string }>): IconComponent {
+  return function AnimatedAdapter({ size, strokeWidth, className }: IconComponentProps) {
+    const weight: PhosphorWeight = strokeWidth != null && strokeWidth >= 1.75 ? "regular" : "light";
+    return <Icon size={size} weight={weight} className={className} />;
+  };
+}
+
 // ── Icon Maps ───────────────────────────────────────────────
 
 const phosphorMap: Record<IconName, IconComponent> = {
@@ -113,8 +127,8 @@ const phosphorMap: Record<IconName, IconComponent> = {
   "menu": phosphor(PhList),
   "dot": phosphor(PhDotOutline),
   "monitor": phosphor(PhMonitor),
-  "sun": phosphor(PhSun),
-  "moon": phosphor(PhMoon),
+  "sun": animated(AnimatedSun),
+  "moon": animated(AnimatedMoon),
   "rectangle-horizontal": phosphor(PhRectangle),
   "circle": phosphor(PhCircle),
   "square-library": phosphor(PhBooks),
@@ -155,8 +169,8 @@ const phosphorMap: Record<IconName, IconComponent> = {
   "github": phosphor(PhGithubLogo),
   "linkedin": phosphor(PhLinkedinLogo),
   "x-logo": phosphor(PhXLogo),
-  "envelope-simple": phosphor(PhEnvelopeSimple),
-  "arrow-up-right": phosphor(PhArrowUpRight),
+  "envelope-simple": animated(AnimatedEnvelope),
+  "arrow-up-right": animated(AnimatedArrowSquareOut),
 };
 
 // ── Unified Map ─────────────────────────────────────────────
