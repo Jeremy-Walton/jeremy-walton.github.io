@@ -57,7 +57,7 @@ function Bio() {
       >
         RoleModel Software
       </a>{" "}
-      building applications that solve business needs. I care about identifying real problems, architecting maintainable software solutions, and building delightful user experiences.
+      building applications that solve business needs. I care about helping people fix problems, architecting maintainable software solutions, and building delightful user experiences.
     </p>
   );
 }
