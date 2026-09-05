@@ -1,11 +1,11 @@
-interface FlipPhotoProps {
-  src: string;
-  alt: string;
-}
+import profilePhoto from "@/assets/profile-min.png";
 
 // Both faces are the same image; the back is rotated 180deg so the card reads
 // as one object turning over rather than two images swapping.
-export function FlipPhoto({ src, alt }: FlipPhotoProps) {
+export function FlipPhoto() {
+  const src = profilePhoto;
+  const alt = "Jeremy Walton";
+
   return (
     <div className="group [perspective:1000px]">
       <div className="relative aspect-square [transform-style:preserve-3d] transition-transform duration-1000 ease-out group-hover:[transform:rotateY(180deg)] motion-reduce:transition-none">
