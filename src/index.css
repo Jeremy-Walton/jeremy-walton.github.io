@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/karla";
 @import "@fontsource-variable/libre-baskerville";
+@import "@fontsource/fragment-mono";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -10,6 +11,7 @@
     --font-heading: var(--font-sans);
     --font-sans: 'Karla Variable', sans-serif;
     --font-serif: 'Libre Baskerville Variable', Georgia, serif;
+    --font-mono: 'Fragment Mono', ui-monospace, monospace;
     --color-hover: var(--hover);
     --color-active: var(--active);
     --color-sidebar-ring: var(--sidebar-ring);
@@ -66,29 +68,32 @@
 }
 
 :root {
-    /* Quiet craftsman: pure-neutral ground, one restrained steel-blue accent
-       (#436c94, oklch hue ~249, the brand's only saturated color). Contrast
-       verified against WCAG AA/AAA via scratch script, not eyeballed. */
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.19 0.015 230);
-    --card: oklch(0.97 0.006 230);
-    --card-foreground: oklch(0.19 0.015 230);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.19 0.015 230);
-    --primary: oklch(0.5186 0.0787 248.99);
+    /* Considered Study, warmed up: ink-blue-tinted neutrals (hue ~250-252),
+       a visibly-tinted (not near-white) background, near-black ink, and a
+       richer, more saturated navy primary so name vs. surname read as two
+       distinct colors, not two shades of the same dark gray. See
+       docs/DESIGN.md. Contrast verified against WCAG AA/AAA via scratch
+       script, not eyeballed. */
+    --background: oklch(0.95 0.014 250);
+    --foreground: oklch(0.16 0.01 250);
+    --card: oklch(0.90 0.016 250);
+    --card-foreground: oklch(0.16 0.01 250);
+    --popover: oklch(0.95 0.014 250);
+    --popover-foreground: oklch(0.16 0.01 250);
+    --primary: oklch(0.38 0.10 252);
     --primary-foreground: oklch(1 0 0);
-    --secondary: oklch(0.97 0.006 230);
-    --secondary-foreground: oklch(0.19 0.015 230);
-    --muted: oklch(0.97 0.006 230);
-    --muted-foreground: oklch(0.46 0.02 230);
-    --accent: oklch(0.945 0.010 230);
-    --accent-foreground: oklch(0.19 0.015 230);
-    --hover: oklch(0.945 0.010 230);
-    --active: oklch(0.910 0.014 230);
+    --secondary: oklch(0.90 0.016 250);
+    --secondary-foreground: oklch(0.16 0.01 250);
+    --muted: oklch(0.90 0.016 250);
+    --muted-foreground: oklch(0.42 0.02 250);
+    --accent: oklch(0.90 0.016 250);
+    --accent-foreground: oklch(0.16 0.01 250);
+    --hover: oklch(0.90 0.016 250);
+    --active: oklch(0.85 0.02 250);
     --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.90 0.010 230);
-    --input: oklch(0.90 0.010 230);
-    --ring: oklch(0.5186 0.0787 248.99);
+    --border: oklch(0.83 0.02 250);
+    --input: oklch(0.83 0.02 250);
+    --ring: oklch(0.38 0.10 252);
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);
@@ -106,26 +111,26 @@
 }
 
 .dark {
-    --background: oklch(0.14 0 0);
-    --foreground: oklch(0.94 0.006 230);
-    --card: oklch(0.20 0.014 230);
-    --card-foreground: oklch(0.94 0.006 230);
-    --popover: oklch(0.14 0 0);
-    --popover-foreground: oklch(0.94 0.006 230);
-    --primary: oklch(0.70 0.06 248.08);
-    --primary-foreground: oklch(0.12 0.01 248);
-    --secondary: oklch(0.20 0.014 230);
-    --secondary-foreground: oklch(0.94 0.006 230);
-    --muted: oklch(0.20 0.014 230);
-    --muted-foreground: oklch(0.66 0.02 230);
-    --accent: oklch(0.24 0.016 230);
-    --accent-foreground: oklch(0.94 0.006 230);
-    --hover: oklch(0.24 0.016 230);
-    --active: oklch(0.28 0.018 230);
+    --background: oklch(0.15 0.02 250);
+    --foreground: oklch(0.95 0.01 250);
+    --card: oklch(0.21 0.018 250);
+    --card-foreground: oklch(0.95 0.01 250);
+    --popover: oklch(0.15 0.02 250);
+    --popover-foreground: oklch(0.95 0.01 250);
+    --primary: oklch(0.72 0.06 252);
+    --primary-foreground: oklch(0.14 0.02 252);
+    --secondary: oklch(0.21 0.018 250);
+    --secondary-foreground: oklch(0.95 0.01 250);
+    --muted: oklch(0.21 0.018 250);
+    --muted-foreground: oklch(0.68 0.02 250);
+    --accent: oklch(0.25 0.02 250);
+    --accent-foreground: oklch(0.95 0.01 250);
+    --hover: oklch(0.25 0.02 250);
+    --active: oklch(0.29 0.022 250);
     --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(0.94 0.006 230 / 10%);
-    --input: oklch(0.94 0.006 230 / 15%);
-    --ring: oklch(0.70 0.06 248.08);
+    --border: oklch(0.95 0.008 250 / 10%);
+    --input: oklch(0.95 0.008 250 / 15%);
+    --ring: oklch(0.72 0.06 252);
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);

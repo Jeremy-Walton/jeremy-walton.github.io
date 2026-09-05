@@ -32,22 +32,22 @@ function ContactIcon({ contact }: { contact: ContactLink }) {
 
 export function IntroSection() {
   return (
-    <header data-intro className="max-w-[65ch]">
+    <header data-intro className="mx-auto max-w-[65ch] text-center">
       <h1
         style={{ "--i": 0 } as CSSProperties}
-        className="font-serif text-[clamp(2rem,1.5rem+2vw,3.25rem)] font-bold leading-[1.05] tracking-[-0.01em] text-foreground"
+        className="font-serif text-[clamp(2.5rem,1.75rem+3vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.01em] text-foreground"
       >
         Jeremy <span className="italic text-primary">Walton</span>
       </h1>
       <p
         style={{ "--i": 1 } as CSSProperties}
-        className="mt-5 text-lg leading-relaxed text-foreground/85 md:text-xl"
+        className="mx-auto mt-5 max-w-[65ch] text-lg leading-relaxed text-foreground/85 md:text-xl"
       >
         Software Craftsman with over a decade of experience. I work at RoleModel Software building applications that solve business needs. I care about solving real problems, creating maintainable software, and building delightful user experiences.
       </p>
       <div
         style={{ "--i": 2 } as CSSProperties}
-        className="mt-7 -ml-3 flex items-center gap-1"
+        className="mt-7 flex items-center justify-center gap-1"
       >
         {contacts.map((contact) => (
           <ContactIcon key={contact.label} contact={contact} />
