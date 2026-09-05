@@ -59,6 +59,7 @@ The single centered `max-w-2xl` column is gone. The page is now built as full-wi
 
 - **Hero band** (`--background`): an asymmetric two-column grid at desktop width (`1.3fr` text / `1fr` photo), stacked single-column (text first) on mobile. Text (name, bio, contact icons) leads; a real profile photo sits opposite it. A graphic monogram was tried here first as a photo stand-in and dropped for looking like a "tombstone" — the real photo doesn't have that problem.
 - **Work band** (`--card`, one tone up from the hero): Projects and Reading List sit side by side in an asymmetric two-column grid (`1fr` / `1.3fr`) at desktop width, each stacked to one column below `lg`. This is the una.im-style "multiple modules side by side" move, adapted to this site's two real content lists instead of a blog+podcast pairing.
+- **Footer band** (`--background`, back to the hero's tone — not a third tone, see Named Rules): a plain `<footer>`, not sticky, holding just a copyright line (left) and one link (right) in `text-sm text-muted-foreground`. No nav, no extra columns — this page has nothing else that needs a footer.
 - Each band's own vertical padding replaces the old per-section `mt-[...]` spacing — sections no longer manage their own top margin, the band does.
 
 ### Named Rules
