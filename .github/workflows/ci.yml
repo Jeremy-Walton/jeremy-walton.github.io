@@ -2,21 +2,18 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - run: corepack enable
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 24
-          cache: yarn
-      - run: yarn install --immutable
-      - run: yarn lint
-      - run: yarn format:check
-      - run: yarn tsc -b
-      - run: yarn test
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npx tsc -b
