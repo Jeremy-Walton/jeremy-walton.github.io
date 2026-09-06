@@ -5,7 +5,7 @@
     position: relative;
     aspect-ratio: 1 / 1;
     transform-style: preserve-3d;
-    transition: transform 1000ms ease-out;
+    transition: transform 1000ms var(--ease-out-expo);
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;

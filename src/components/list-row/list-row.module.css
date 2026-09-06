@@ -61,7 +61,7 @@
     flex-shrink: 0;
     margin-top: var(--spacing);
     color: var(--muted-foreground);
-    transition: color 400ms ease-out, transform 400ms ease-out;
+    transition: color 400ms var(--ease-out-expo), transform 400ms var(--ease-out-expo);
 
     @media (prefers-reduced-motion: reduce) {
       transition: none;

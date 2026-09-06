@@ -14,16 +14,13 @@
   user-select: none;
   transition-property: background-color, border-color, box-shadow, color, transform;
   transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: var(--ease-out-expo);
 
   /* Clips the theme toggle's icon while it spins through a swap. */
   overflow: hidden;
 
   &:hover {
-    background-color: light-dark(
-      var(--muted),
-      color-mix(in oklab, var(--muted) 50%, transparent)
-    );
+    background-color: var(--muted);
     color: var(--foreground);
   }
 
