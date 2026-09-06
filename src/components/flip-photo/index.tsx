@@ -12,15 +12,15 @@ export function FlipPhoto() {
       <div className={styles["flip-photo__card"]}>
         <img
           src={profilePhoto}
-          alt="Jeremy Walton"
-          fetchPriority="high"
-          className={`${face} ${styles["flip-photo__face--front"]}`}
-        />
-        <img
-          src={profilePhoto}
           alt=""
           aria-hidden="true"
           className={`${face} ${styles["flip-photo__face--back"]}`}
+        />
+        <img
+          src={profilePhoto}
+          alt="Jeremy Walton"
+          fetchPriority="high"
+          className={`${face} ${styles["flip-photo__face--front"]}`}
         />
       </div>
     </div>
