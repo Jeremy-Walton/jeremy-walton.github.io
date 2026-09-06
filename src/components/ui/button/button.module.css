@@ -18,12 +18,11 @@
   overflow: hidden;
 
   &:hover {
-    background-color: var(--muted);
+    background-color: light-dark(
+      var(--muted),
+      color-mix(in oklab, var(--muted) 50%, transparent)
+    );
     color: var(--foreground);
-  }
-
-  :global(.dark) &:hover {
-    background-color: color-mix(in oklab, var(--muted) 50%, transparent);
   }
 
   &:focus-visible {
@@ -38,6 +37,7 @@
   /* Keeps the glyph from becoming the event target, so hover/leave always
      resolve against the button itself. */
   & svg {
+    display: flex;
     flex-shrink: 0;
     pointer-events: none;
   }

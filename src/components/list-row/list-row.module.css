@@ -28,7 +28,7 @@
   .list-row__leading {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
-    line-height: var(--text-xs--line-height);
+    line-height: var(--text-xs-leading);
     color: var(--primary);
   }
 
@@ -41,7 +41,7 @@
   .list-row__source {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    line-height: var(--text-sm--line-height);
+    line-height: var(--text-sm-leading);
     color: var(--muted-foreground);
   }
 

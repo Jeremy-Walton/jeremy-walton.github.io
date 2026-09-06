@@ -22,19 +22,12 @@
     backface-visibility: hidden;
 
     &.flip-photo__face--front {
-      filter: grayscale(1);
-
-      :global(.dark) & {
-        filter: none;
-      }
+      filter: grayscale(var(--photo-grayscale));
     }
 
     &.flip-photo__face--back {
       transform: rotateY(180deg);
-
-      :global(.dark) & {
-        filter: grayscale(1);
-      }
+      filter: grayscale(calc(1 - var(--photo-grayscale)));
     }
   }
 

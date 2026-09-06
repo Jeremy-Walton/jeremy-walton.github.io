@@ -45,8 +45,8 @@ function ReadingList() {
 
 function App() {
   return (
-    <div className="min-h-dvh">
-      <div className="fixed top-5 right-5 z-10 md:top-8 md:right-8">
+    <div className={styles["page"]}>
+      <div className={styles["page__toggle"]}>
         <ThemeToggle />
       </div>
       <main>

@@ -17,7 +17,6 @@ function IconSwap({ swapKey, children }: { swapKey: string; children: ReactNode 
     <AnimatePresence mode="wait" initial={false}>
       <motion.span
         key={swapKey}
-        className="flex"
         initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotate: -90, scale: 0.6 }}
         animate={{ opacity: 1, rotate: 0, scale: 1 }}
         exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotate: 90, scale: 0.6 }}

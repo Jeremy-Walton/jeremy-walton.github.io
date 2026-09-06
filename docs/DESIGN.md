@@ -105,23 +105,15 @@ Flat by default — depth comes from spacing, band background color, and the acc
 
 ## 6. CSS Modules
 
-Components whose styling outgrows utility classes get a folder with a `<component>.module.css` alongside an `index.tsx`. A component with no module stays a single flat file. Four rules:
+Every component's styling is a `<component>.module.css` beside an `index.tsx` in its own folder; a component with no styling of its own stays a single flat file. Design tokens live in `src/theme.css`, layout primitives in `src/utilities.css`, base rules in `src/index.css`, and the reset in `src/reset.css`. Four rules:
 
-**Never mix utilities with a module class on one element.** Once an element has a module class, that class owns every property it needs — layout and spacing included. A half-and-half `className` splits one element's styling across two files for no gain. Never `@apply` to pull a utility in either: it hides real declarations behind a name the CSS file can't show you, and the resolved output is a surprise. Write the properties out. Repeating three declarations across two modules beats an indirection, and they need no comment justifying themselves.
+**One module per component, all of it.** A `className` is module classes or utility classes, never both on one element. An element with a module class gets every property from that class — layout included. Where two modules need the same handful of declarations, repeat them; three plain lines beat an indirection, and they need no comment justifying themselves.
 
-**Utilities are for layout and position only.** How an element sits in its parent and how its children are arranged — `flex`, `grid`, `gap-4`, `items-center`, `fixed`, `top-5`, `z-10`, `min-h-dvh` — can stay a bare utility, because a name adds nothing. The theme toggle keeps `className="flex"` for that reason.
+**BEM names.** `.block`, `.block__element`, `.block__element--modifier`. In JSX, reach them with bracket access — `styles["flip-photo__card"]` — since the dashes rule out dot access. A boolean prop picks a modifier (`ListSection`'s `underlined`), never a string union of class names.
 
-Everything that shapes how a thing *looks* goes in a module — never a utility:
+**Nest everything under the block.** One top-level rule per block. Elements nest inside the block, modifiers nest inside their element as `&.block__element--modifier`, and states and media queries nest inside whatever they modify. Native CSS nesting cannot join `&` to a suffix, so write the element's full class name (`.flip-photo__card`, not `&__card`) — that is a Sass feature and it will not compile here.
 
-- **Text.** Every `text-*`, `font-*`, `leading-*`, and `tracking-*`. Size, weight, color, and rhythm are the component's voice.
-- **Color and surface.** `bg-*`, `border-*`, `rounded-*`, `shadow-*`.
-- **Padding.** Internal spacing changes the component's own look, not its placement in its parent, so `py-8` is never a utility. This is what retired the old `page-width` utility: it carried `padding-inline`, so every caller needed a module anyway, and its three declarations now sit in the two modules that want them.
-
-Margin and gap are the exception in the spacing family: they position an element against its siblings rather than shape it, so they may stay utilities. Any of the above appearing on an element is a reason to give it a module class, not a utility to leave beside one.
-
-**BEM names.** `.block`, `.block__element`, `.block__element--modifier`. In JSX, reach them with bracket access — `styles["flip-photo__card"]` — since the dashes rule out dot access.
-
-**Nest everything under the block.** One top-level rule per module. Elements nest inside the block, modifiers nest inside their element as `&.block__element--modifier`, and states, media queries, and `:global(.dark) &` nest inside whatever they modify. Native CSS nesting cannot join `&` to a suffix, so write the element's full class name (`.flip-photo__card`, not `&__card`) — that is a Sass feature and it will not compile here.
+**Theme with `light-dark()`, never a selector.** A value that differs between themes is one declaration, not two rules: `filter: light-dark(grayscale(1), none)`. Modules never reference `:root`, a theme class, or `prefers-color-scheme` — see Section 7.
 
 ```css
 .flip-photo {
@@ -131,11 +123,7 @@ Margin and gap are the exception in the spacing family: they position an element
     backface-visibility: hidden;
 
     &.flip-photo__face--front {
-      filter: grayscale(1);
-
-      :global(.dark) & {
-        filter: none;
-      }
+      filter: grayscale(var(--photo-grayscale));
     }
   }
 
@@ -145,7 +133,36 @@ Margin and gap are the exception in the spacing family: they position an element
 }
 ```
 
-## 7. Components
+## 7. Layout Utilities
+
+`src/utilities.css` holds semantic layout primitives, modelled on [Optics](https://github.com/RoleModel/optics): `container`, `stack`, `cluster`, `split`, `flank`, `grid`, `frame`, and `sr-only`. Each names an arrangement rather than a property, so `class="split"` says what the row is, where `flex items-center justify-between gap-4` only says how it is built.
+
+They are for markup that has no module class. **Never combine a utility with a module class on the same element** — that splits one element's styling across two files. If an element needs a module, the module declares its layout too, even where a primitive would have covered it.
+
+Only layout and position live here. No color, typography, padding, or margin utilities — those belong to a component's module (see Section 6). Spacing is one knob: set `--gap` on the element to override a primitive's default.
+
+## 8. Theming
+
+`src/theme.css` declares every token on `:root` as a `light-dark()` pair under `color-scheme: light dark`, so the system preference is the default with no JavaScript involved. An explicit choice is a `data-theme-mode` attribute on `<html>`, and the only thing those blocks change is `color-scheme`:
+
+```css
+:root[data-theme-mode="light"] { color-scheme: only light; }
+:root[data-theme-mode="dark"]  { color-scheme: only dark; }
+```
+
+Because every themed *color* is already a pair, flipping `color-scheme` *is* the override — no color is redeclared. A blocking script in `index.html` applies a stored override before first paint; with nothing stored it sets no attribute and the system preference wins.
+
+`light-dark()` is a color function and is valid **only** where CSS expects a `<color>`. A browser drops `filter: light-dark(grayscale(1), none)` as invalid, and a build step that rewrites it into custom properties will hide that from you. So anything that is not a color gets a plain token, flipped in three places — the `:root` default, the forced-dark block, and a `prefers-color-scheme: dark` block guarded by `:not([data-theme-mode="light"])` so a forced-light choice still wins:
+
+```css
+:root { --photo-grayscale: 1; }
+:root[data-theme-mode="dark"] { --photo-grayscale: 0; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme-mode="light"]) { --photo-grayscale: 0; }
+}
+```
+
+## 9. Components
 
 ### Name / Display Headline
 - **Shape:** no container, plain text.
@@ -154,14 +171,14 @@ Margin and gap are the exception in the spacing family: they position an element
 ### Contact Icons
 - **Shape:** 36×36px hit target, `rounded-lg` corners — the shared button radius, not a circle. Rendered as an `<a>` via the Button's `render` prop with `nativeButton={false}`, so the link keeps anchor semantics.
 - **Style:** icon inherits page `--foreground` at rest — no fill, no labels, no pill chrome. On hover the background fills `--muted` (`--muted/50` in dark) and text stays `--foreground`; focus-visible draws a `--ring` ring. The accent does *not* appear here — unlike the row arrow, these icons don't turn primary on hover.
-- **Button component:** there is exactly one button on this site — a 36×36px ghost icon button — so `Button` takes no `variant`, no `size`, and no `className` at all; every caller renders the same thing. `className` is deliberately omitted from its props type, so an attempt to restyle it from a call site is a compile error rather than a silent override — anything visual goes in the module. This deliberately departs from the shadcn primitive, whose six variants and nine sizes were dragging the entire `--secondary` / `--destructive` / `--input` / `*-foreground` token set along with them. Consequence: the theme toggle grew from 28px to 36px and now matches the contact icons, which is the intent — one hit-target size everywhere. Its styling lives in `button.module.css` as plain CSS with native nesting rather than utility classes — with one fixed appearance there was no variant matrix left for utilities to express, and the two non-obvious rules below are easier to explain in a file that has room for a comment. It still reads the same design tokens (`--radius`, `--muted`, `--foreground`, `--ring`) from `index.css`, and dark mode hooks the global `.dark` class via `:global(.dark) &`. The transparent border is load-bearing (it reserves the space the focus ring fills, so focusing doesn't shift layout) and `background-clip: padding-box` keeps the hover fill inside it.
-- **Icon glyph size:** icons are set to 16px by their own `size` prop. The shadcn base class used to force this via CSS (`[&_svg:not([class*='size-'])]:size-4`), which silently overrode the prop — contact icons asked for 20px and rendered at 16px. The CSS override is gone; the prop is now the only source of truth, so changing it actually works.
-- **Icon source:** [phosphor-animated.com](https://phosphor-animated.com/) (hover-animated, MIT, installed as source via the shadcn CLI) for the envelope; the theme toggle's sun/moon also come from there. GitHub, LinkedIn, and X stay on plain `@phosphor-icons/react` — phosphor-animated has no brand logos, only generic icons.
+- **Button component:** there is exactly one button on this site — a 36×36px ghost icon button — so `Button` takes no `variant`, no `size`, and no `className` at all; every caller renders the same thing. `className` is deliberately omitted from its props type, so an attempt to restyle it from a call site is a compile error rather than a silent override — anything visual goes in the module. One hit-target size everywhere: the theme toggle and the contact icons are both 36px. Its styling lives in `button.module.css`, and it reads the same design tokens (`--radius`, `--muted`, `--foreground`, `--ring`) from `theme.css`, and its one theme-dependent value — the hover fill — is a `light-dark()` pair rather than a second rule. The transparent border is load-bearing (it reserves the space the focus ring fills, so focusing doesn't shift layout) and `background-clip: padding-box` keeps the hover fill inside it.
+- **Icon glyph size:** icons are set to 16px by their own `size` prop, which is the only source of truth — no CSS rule overrides it.
+- **Icon source:** [phosphor-animated.com](https://phosphor-animated.com/) (hover-animated, MIT, vendored as source into `src/components/icons/`) for the envelope; the theme toggle's sun/moon also come from there. GitHub, LinkedIn, and X stay on plain `@phosphor-icons/react` — phosphor-animated has no brand logos, only generic icons.
 - **Theme toggle animation:** the sun/moon icon's own hover choreography didn't fire from inside the `Button` + `AnimatePresence` wrapper (root cause not fully isolated). Fixed the same way as the row arrow (see List Row): `trigger="none"` on the icon, driven imperatively via a ref's `play()`/`stop()` from the Button's own `onMouseEnter`/`onMouseLeave`, instead of relying on the icon's built-in hover listener.
 
 ### Profile Photo
 - **Shape:** square, `var(--radius-3xl)` corners, `object-cover`, sitting opposite the name/bio in the hero grid, capped at `max-w-72`. No border, no shadow — flat, per the Flat-By-Default Rule.
-- **Style:** one source image (`profile-min.png`), rendered twice as a 3D flip card (`perspective` on the wrapper, `preserve-3d` + `backface-visibility: hidden` on front/back faces, `rotateY(180deg)` on the back face and on hover). Styling lives in `flip-photo.module.css` rather than utility classes, following the same rule as the Button component — the 3D transforms and the theme-dependent grayscale needed arbitrary-value utilities to express, which read worse than plain CSS. Dark mode hooks the global `.dark` class via `:global(.dark) &`. At rest: color in dark mode, black-and-white in light mode (CSS `grayscale`, not a second exported file). On hover: a 1000ms `rotateY` flip reveals the back face, which is always the *opposite* rendering of the front — grayscale flips to color, color flips to grayscale — regardless of theme. `prefers-reduced-motion` drops the transition duration so the swap is instant rather than animated; the flip itself (a hover-only, non-essential embellishment) still happens since it's the whole point of the interaction, just without the spin.
+- **Style:** one source image (`profile-min.png`), rendered twice as a 3D flip card (`perspective` on the wrapper, `preserve-3d` + `backface-visibility: hidden` on front/back faces, `rotateY(180deg)` on the back face and on hover). Styling lives in `flip-photo.module.css`. Each face reads the `--photo-grayscale` token, the back as `calc(1 - ...)`, so the two stay opposites in either theme. At rest: color in dark mode, black-and-white in light mode (CSS `grayscale`, not a second exported file). On hover: a 1000ms `rotateY` flip reveals the back face, which is always the *opposite* rendering of the front — grayscale flips to color, color flips to grayscale — regardless of theme. `prefers-reduced-motion` drops the transition duration so the swap is instant rather than animated; the flip itself (a hover-only, non-essential embellishment) still happens since it's the whole point of the interaction, just without the spin.
 
 ### Section Heading
 - **Copy:** "What I'm working on" (Projects) and "What I'm reading" (Reading List) — first-person and conversational rather than the generic list-noun labels, matching the "reads like a person" brand personality.
@@ -173,7 +190,7 @@ Margin and gap are the exception in the spacing family: they position an element
 - **Anatomy, all but title optional:** one line holds an optional mono index (Projects only: `01`, `02`…, in primary at full opacity), the title, and an inline mono source prefixed with "— " — all on the same line, wrapping together if the combination is long; an arrow icon (phosphor-animated's `arrow-square-out` — the closest match to the old plain arrow-up-right, since phosphor-animated doesn't have that exact glyph) sits right-aligned on that line. On row hover the arrow turns primary and scales to 125% over 400ms (`group-hover:scale-125`), while its own built-in slip-out animation plays — driven from the row, not the icon, via `useIconHover` (the icon is set `trigger="none"` so the whole row is the hover target, not just the glyph). 400ms is deliberately half the icon's 800ms choreography, so the growth finishes as the arrow reaches the top of its slip-out and doesn't keep growing on the way back. The icon's own motion is small on purpose — the scale is what makes the hover read, so the two shouldn't both be loud. A muted description/note paragraph follows below when present. Reading List rows have no index, so their content sits flush left instead of indented under one.
 - **Why no tags:** reading-list category badges (UI/AI/CSS/Rails, one hardcoded color per category) were tried and dropped — they didn't help a reader decide anything, and they were the one place the two lists' row shapes diverged. Source + title + optional description does the job.
 
-## 8. Do's and Don'ts
+## 10. Do's and Don'ts
 
 ### Do:
 - **Do** surface the intro and contact/social links early — orient the visitor immediately, the way una.im does.

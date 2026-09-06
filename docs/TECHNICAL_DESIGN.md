@@ -7,16 +7,16 @@ Companion to @PRD.md — this covers the tech stack and implementation details n
 - **Framework**: React (SPA, no routing — single page)
 - **Language**: TypeScript
 - **Build tool**: Vite, static export deployed to GitHub Pages
-- **Styling**: Tailwind CSS, using its `dark:` variant for theming. Utilities are the default; a CSS Module (`*.module.css`, plain CSS with native nesting) is used where a component has one fixed appearance and no variants for utilities to express — currently just `Button`. Modules still read the same design tokens from `index.css`, and reach dark mode via `:global(.dark) &` rather than the `dark:` variant.
-- **UI components**: [shadcn/ui](https://ui.shadcn.com/), built on Base UI primitives (shadcn's current default), with a custom theme configured at install time. Supplemented by the [Fluid Functionalism](https://www.fluidfunctionalism.com) registry, which distributes its own components on top of shadcn. Vendored shadcn components are trimmed to what this site actually uses rather than kept upstream-identical — `Button` carries one style and two sizes instead of the full variant matrix (see DESIGN.md § Contact Icons). The trade-off is accepted deliberately: re-running `shadcn add button` would overwrite the trimmed version, so re-diff it by hand if that ever happens.
-- **Testing**: Vitest for basic unit/component tests (e.g. theme toggle logic, data-file shape)
-- **Linting/formatting**: ESLint + Prettier
+- **Styling**: plain CSS, no utility framework. Every component owns a CSS Module (`*.module.css`, native nesting, BEM names) — see DESIGN.md § CSS Modules. Four global files back them: `src/theme.css` (design tokens on `:root`), `src/utilities.css` (semantic layout primitives, modelled on [Optics](https://github.com/RoleModel/optics)), `src/reset.css` (reset), `src/index.css` (imports plus a short base layer).
+- **Theming**: `color-scheme` plus `light-dark()` tokens, with a `data-theme-mode` attribute on `<html>` for an explicit override — see DESIGN.md § Theming.
+- **UI components**: [Base UI](https://base-ui.com/) primitives, each vendored into `src/components/ui/` and paired with a CSS Module. Only `Button` exists today, carrying a single fixed appearance (see DESIGN.md § Contact Icons).
+- **Linting/formatting**: oxlint
 - **Package manager**: npm
-- **Node version**: Latest LTS (22.x), pinned in CI and local dev
+- **Node version**: 24, pinned in CI
 
 ## Design Tooling
 
-[Impeccable](https://impeccable.style/) is used during development as a Claude Code design skill — it provides design vocabulary/commands and anti-pattern ("anti-slop") checks to guide implementation of the (currently undecided) visual design. It's a dev-time tool, not a runtime dependency of the built site, and works alongside Tailwind/shadcn rather than replacing them.
+[Impeccable](https://impeccable.style/) is used during development as a Claude Code design skill — it provides design vocabulary/commands and anti-pattern ("anti-slop") checks to guide implementation of the (currently undecided) visual design. It's a dev-time tool, not a runtime dependency of the built site.
 
 ## Content / Data
 

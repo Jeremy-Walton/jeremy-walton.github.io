@@ -1,3 +1,19 @@
+.page {
+  min-height: 100dvh;
+
+  .page__toggle {
+    position: fixed;
+    top: calc(var(--spacing) * 5);
+    right: calc(var(--spacing) * 5);
+    z-index: 10;
+
+    @media (width >= 48rem) {
+      top: calc(var(--spacing) * 8);
+      right: calc(var(--spacing) * 8);
+    }
+  }
+}
+
 .band {
   .band__inner {
     max-width: var(--container-5xl);
