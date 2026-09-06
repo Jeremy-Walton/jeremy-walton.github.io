@@ -54,7 +54,16 @@ function ThemeProvider({ children }: { children: ReactNode }) {
   const toggleTheme = () => {
     const next = theme === "dark" ? "light" : "dark";
     storeTheme(next);
-    setTheme(next);
+    const apply = () => {
+      document.documentElement.dataset.themeMode = next;
+      setTheme(next);
+    };
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced || !document.startViewTransition) {
+      apply();
+      return;
+    }
+    document.startViewTransition(apply);
   };
 
   return (

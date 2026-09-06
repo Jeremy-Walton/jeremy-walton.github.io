@@ -64,7 +64,7 @@
     transition: color 400ms var(--ease-out-expo), transform 400ms var(--ease-out-expo);
 
     @media (prefers-reduced-motion: reduce) {
-      transition: none;
+      transition: color 400ms var(--ease-out-expo);
     }
   }
 
@@ -90,5 +90,9 @@
   &:focus-visible .list-row__arrow {
     color: var(--primary);
     transform: scale(1.25);
+
+    @media (prefers-reduced-motion: reduce) {
+      transform: none;
+    }
   }
 }

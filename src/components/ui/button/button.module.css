@@ -30,6 +30,7 @@
   }
 
   &:active {
+    transition-duration: 0s;
     transform: translateY(1px);
   }
 

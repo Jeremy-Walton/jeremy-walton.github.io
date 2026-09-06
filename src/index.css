@@ -91,7 +91,17 @@ p {
   animation-delay: calc(var(--i, 0) * 90ms);
 }
 
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 300ms;
+  animation-timing-function: var(--ease-out-expo);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
   [data-intro-item] {
     animation: none !important;
     opacity: 1 !important;
