@@ -43,7 +43,8 @@
   }
 
   .list-row__title {
-    font-weight: 500;
+    font-size: var(--text-lg);
+    font-weight: 600;
     color: var(--foreground);
     transition: color 150ms;
   }
@@ -69,7 +70,7 @@
   .list-row__description {
     max-width: 58ch;
     margin-top: calc(var(--spacing) * 1.5);
-    font-size: var(--text-md);
+    font-size: var(--text-sm);
     line-height: var(--leading-relaxed);
     color: var(--muted-foreground);
 

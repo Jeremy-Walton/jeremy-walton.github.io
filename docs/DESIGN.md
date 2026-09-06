@@ -16,10 +16,10 @@ colors:
 typography:
   display:
     fontFamily: "Libre Baskerville Variable, Libre Baskerville Fallback, Georgia, serif"
-    fontSize: "clamp(2.5rem, 1.75rem + 3vw, 4.5rem)"
+    fontSize: "clamp(3rem, 2rem + 3.5vw, 4.5rem)"
     fontWeight: 700
     lineHeight: 1.05
-    letterSpacing: "-0.01em"
+    letterSpacing: "-0.02em"
   body:
     fontFamily: "Karla Variable, Karla Fallback, sans-serif"
     fontSize: "1rem"
@@ -92,13 +92,15 @@ Each stack carries a metric-matched fallback face before its generic — `Karla 
 **Character:** Three families, three narrow jobs — a classic book-serif for the one display moment, a warm humanist grotesque for everything meant to be read, and a quiet monospace for everything meant to be scanned (labels, numbers, metadata). Fragment Mono was picked over the more common IBM Plex Mono / Space Mono default so the "developer" nod doesn't read as a training-data reflex.
 
 ### Hierarchy
-- **Display** (700 weight serif, `clamp(2.5rem, 1.75rem + 3vw, 4.5rem)`, line-height 1.05): the name only — "Jeremy" roman, "Walton" italic and colored primary. Sized up from the original color-only pass to actually carry the wider hero band; still well under the ≤6rem brand ceiling.
-- **Headline** (600 weight sans, `1.5rem`–`1.75rem`): "What I'm working on" / "What I'm reading" section headings.
-- **Body** (400 weight sans, `1.125rem`–`1.25rem`, line-height 1.6): bio paragraph. Capped at 65ch.
-- **Row title** (500 weight sans, `1rem`): project/reading item titles.
-- **Label** (400 weight mono, `0.8125rem`): sources and index numerals — the one place the mono face appears.
+- **Display** (700 weight serif, `clamp(3rem, 2rem + 3.5vw, 4.5rem)`, line-height 1.05, `-0.02em`): the name only — "Jeremy" roman, "Walton" italic and colored primary. The ceiling stayed at 4.5rem; the floor and slope rose so the type actually *reaches* it. The previous curve needed a ~1467px window to hit its own maximum, so on every real screen the name rendered well under the size it was specified at.
+- **Headline** (700 weight sans, `1.5rem`–`1.875rem`): "What I'm working on" / "What I'm reading" section headings.
+- **Body** (400 weight sans, `1.125rem`–`1.25rem`, line-height 1.6, full `--foreground`): bio paragraph. Capped at 65ch. Previously mixed to 85% ink — a half-measure that cost contrast and bought nothing.
+- **Row title** (600 weight sans, `1.125rem`): project/reading item titles.
+- **Secondary** (400 weight, `0.875rem`): row descriptions (sans) and sources (mono). One tier, two textures.
+- **Label** (400 weight mono, `0.75rem`): index numerals.
 
 ### Named Rules
+**The Real-Step Rule.** Every adjacent step in the scale is at least 1.25× apart, measured between elements that actually sit together on the page. The scale once ran 14 / 15 / 16 / 18 / 20 / 20 / 24 — seven values inside a 1.7× span, every step under 1.25, which read as one undifferentiated field of text rather than a hierarchy. Descriptions and sources were merged into a single Secondary tier and the row title lifted away from them. Two sizes one pixel apart are not a hierarchy; they are noise. A new size earns its place only by clearing 1.25× from its neighbour.
 **The One Serif Word Rule.** The display serif appears in exactly one place: the personal name. Every heading and body of text is Karla; mono is reserved for labels only. Three typefaces, not two, but each is still a deliberate, narrow accent — none competes with Karla for the reader's attention on actual prose.
 
 ## 5. Elevation

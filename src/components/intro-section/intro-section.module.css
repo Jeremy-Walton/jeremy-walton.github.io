@@ -4,10 +4,10 @@
 
   .intro__headline {
     font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 1.75rem + 3vw, 4.5rem);
+    font-size: clamp(3rem, 2rem + 3.5vw, 4.5rem);
     font-weight: 700;
     line-height: 1.05;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
     color: var(--foreground);
   }
 
@@ -21,7 +21,7 @@
     margin-top: calc(var(--spacing) * 5);
     font-size: var(--text-lg);
     line-height: var(--leading-relaxed);
-    color: color-mix(in oklab, var(--foreground) 85%, transparent);
+    color: var(--foreground);
 
     @media (width >= 48rem) {
       font-size: var(--text-xl);
