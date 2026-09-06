@@ -13,3 +13,4 @@ Ensure these files are updated if any product level decisions or changes are mad
 
 - `docs/PRODUCT.md` — register, audience, brand personality, design principles. Read it before any visual/UX decision.
 - `docs/DESIGN.md` — the visual system: color tokens, typography, motion rules. Read it before touching styling, colors, or components.
+- `docs/AUDIT.md` — the standing `/impeccable audit` record: current score, open findings, directions already explored and declined. Read it before proposing a visual direction, and refresh it after re-running the audit.
