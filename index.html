@@ -8,19 +8,17 @@
     <meta name="color-scheme" content="light dark" />
     <title>Jeremy Walton</title>
     <script>
+      // Only a stored override needs applying before paint — with no attribute,
+      // `color-scheme: light dark` already follows the system preference.
       (function () {
         var stored = localStorage.getItem("theme");
-        var theme =
-          stored === "light" || stored === "dark"
-            ? stored
-            : window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light";
-        document.documentElement.classList.toggle("dark", theme === "dark");
+        if (stored === "light" || stored === "dark") {
+          document.documentElement.dataset.themeMode = stored;
+        }
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-DvJaY3ri.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DUu71Ipz.css">
+    <script type="module" crossorigin src="/assets/index-DOW_WK0F.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-B1nSCcpI.css">
   </head>
   <body>
     <div id="root"></div>
