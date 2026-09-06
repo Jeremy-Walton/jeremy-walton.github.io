@@ -12,7 +12,7 @@
   --primary: light-dark(oklch(0.38 0.10 252), oklch(0.72 0.06 252));
   --muted: light-dark(oklch(0.90 0.016 250), oklch(0.21 0.018 250));
   --muted-foreground: light-dark(oklch(0.42 0.02 250), oklch(0.68 0.02 250));
-  --border: light-dark(oklch(0.83 0.02 250), oklch(0.95 0.008 250 / 10%));
+  --border: light-dark(oklch(0.74 0.02 250), oklch(0.95 0.008 250 / 18%));
   --ring: light-dark(oklch(0.38 0.10 252), oklch(0.72 0.06 252));
 
   --font-sans: "Karla Variable", sans-serif;
@@ -23,6 +23,7 @@
   --text-xs-leading: 1.3333;
   --text-sm: 0.875rem;
   --text-sm-leading: 1.4286;
+  --text-md: 0.9375rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-xl-leading: 1.4;

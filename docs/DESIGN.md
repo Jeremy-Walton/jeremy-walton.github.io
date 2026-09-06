@@ -6,7 +6,7 @@ colors:
   ink-light: "oklch(0.16 0.01 250)"
   surface-light: "oklch(0.90 0.016 250)"
   muted-light: "oklch(0.42 0.02 250)"
-  border-light: "oklch(0.83 0.02 250)"
+  border-light: "oklch(0.74 0.02 250)"
   primary-light: "oklch(0.38 0.10 252)"
   bg-dark: "oklch(0.15 0.02 250)"
   ink-dark: "oklch(0.95 0.01 250)"
@@ -76,7 +76,7 @@ Mostly-neutral, ink-blue-tinted ground with one deep navy primary accent used de
 - **Background** (`oklch(0.95 0.014 250)` light / `oklch(0.15 0.02 250)` dark): page ground, ink-blue tinted (hue ~250) rather than pure neutral — same hue family as the primary, one tone lighter/darker. Light mode was pulled off near-white (was `0.985`) to `0.95`: enough tint to read as a color, not "default white with a hint of something."
 - **Ink** (`oklch(0.16 0.01 250)` light / `oklch(0.95 0.01 250)` dark): body text, near-black in light mode (darkened from `0.19` specifically to clear more room between it and the primary), ≥16:1 contrast against background.
 - **Muted** (`oklch(0.42 0.02 250)` light / `oklch(0.68 0.02 250)` dark): secondary text (descriptions, sources), ≥7:1 contrast.
-- **Border** (`oklch(0.83 0.02 250)` light / `oklch(0.95 0.008 250 / 10%)` dark): hairline row dividers only.
+- **Border** (`oklch(0.74 0.02 250)` light / `oklch(0.95 0.008 250 / 18%)` dark): hairline row dividers only. Both were originally a tone fainter (`0.83` / `10%`) and measured ~1.25:1 against `--card` — the dividers were structurally present but visually absent. Darkened until each theme lands near 1.7:1, matched to each other, which reads as a hairline rather than disappearing.
 
 ## 4. Typography
 

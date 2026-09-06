@@ -69,7 +69,7 @@
   .list-row__description {
     max-width: 58ch;
     margin-top: calc(var(--spacing) * 1.5);
-    font-size: 15px;
+    font-size: var(--text-md);
     line-height: var(--leading-relaxed);
     color: var(--muted-foreground);
 
