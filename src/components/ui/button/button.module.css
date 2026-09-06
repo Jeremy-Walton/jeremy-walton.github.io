@@ -12,7 +12,9 @@
   outline: none;
   -webkit-user-select: none;
   user-select: none;
-  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition-property: background-color, border-color, box-shadow, color, transform;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Clips the theme toggle's icon while it spins through a swap. */
   overflow: hidden;

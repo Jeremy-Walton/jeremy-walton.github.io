@@ -1,4 +1,4 @@
-import profilePhoto from "@/assets/profile-min.png";
+import profilePhoto from "@/assets/profile.webp";
 
 import styles from "./flip-photo.module.css";
 
@@ -13,6 +13,7 @@ export function FlipPhoto() {
         <img
           src={profilePhoto}
           alt="Jeremy Walton"
+          fetchPriority="high"
           className={`${face} ${styles["flip-photo__face--front"]}`}
         />
         <img
