@@ -20,7 +20,7 @@ References:
 - [una.im](https://una.im/) — the clean intro treatment and socials placed right up top, immediately orienting.
 - [emilkowal.ski](https://emilkowal.ski/) — the simplicity is close to right, but leans too spare; this site should carry a bit more warmth/texture than pure minimalism.
 - [interfaces.dev](https://interfaces.dev/) — editorial character on top of a mostly-neutral base: a mixed serif/italic display headline, one confident bright-accent "marker highlight" around a key phrase, colorful abstract module thumbnails against otherwise neutral chrome, rounded pill buttons, numbered issue badges. The source of the "more character, a splash of color" direction — not a wholesale copy of its palette.
-- [una.im](https://una.im/) — its warm, playful, off-the-clock personal-developer feel (not its literal texture, photo, or layout) is the source of the ink-blue-neutrals + warm-terracotta-accent palette shift and the small monospace-label addition in DESIGN.md.
+- [una.im](https://una.im/) — its warm, playful, off-the-clock personal-developer feel (not its literal texture, photo, or layout) is the source of the ink-blue-neutrals + warm-terracotta-accent palette shift in DESIGN.md.
 
 ## Anti-references
 

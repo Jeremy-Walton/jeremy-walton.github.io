@@ -25,10 +25,6 @@ typography:
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
-  mono:
-    fontFamily: "Fragment Mono, Fragment Mono Fallback, ui-monospace, monospace"
-    fontSize: "0.8125rem"
-    fontWeight: 400
 rounded:
   full: "9999px"
   sm: "3px"
@@ -43,12 +39,12 @@ spacing:
 
 **Creative North Star: "The Considered Study, Warmed Up"**
 
-Same calm, personal space as before, but with the page actually laid out like it means it. This revision is informed by [una.im](https://una.im/) — not copied, but taken for its essence: a personal-developer site that reads as confident rather than a flat, single-column resume. Two things carry that shift: the page structure moved from one narrow centered column stacked top to bottom into distinct full-width bands, a two-column hero with a real profile photo, and a two-column content layout — real layout moves, not just a recolor; and the neutral ground moved from a pure-gray "no opinion" scale to a deliberately ink-blue-tinted one. The primary accent went through several iterations before landing: steel blue → a warm terracotta (rejected, too orange) → a deep navy at `#1a2a3c` (rejected in light mode only — it sat too close to the near-black ink color, so "Jeremy" and "Walton" read as the same dark gray) → the current richer, more saturated navy (`oklch(0.38 0.10 252)`), which is close in hue to the tinted neutrals but distinctly lighter and more colorful than ink — the palette is now a confident, near-monochrome blue system rather than a neutral-plus-accent one. The background also moved off near-white to a visibly tinted pale blue, so the whole page has less of a stark, clinical white ground. A monospace typeface joins the system for small labels and numerals, a quiet, sparing nod to the fact that this is a developer's site.
+Same calm, personal space as before, but with the page actually laid out like it means it. This revision is informed by [una.im](https://una.im/) — not copied, but taken for its essence: a personal-developer site that reads as confident rather than a flat, single-column resume. Two things carry that shift: the page structure moved from one narrow centered column stacked top to bottom into distinct full-width bands, a two-column hero with a real profile photo, and a two-column content layout — real layout moves, not just a recolor; and the neutral ground moved from a pure-gray "no opinion" scale to a deliberately ink-blue-tinted one. The primary accent went through several iterations before landing: steel blue → a warm terracotta (rejected, too orange) → a deep navy at `#1a2a3c` (rejected in light mode only — it sat too close to the near-black ink color, so "Jeremy" and "Walton" read as the same dark gray) → the current richer, more saturated navy (`oklch(0.38 0.10 252)`), which is close in hue to the tinted neutrals but distinctly lighter and more colorful than ink — the palette is now a confident, near-monochrome blue system rather than a neutral-plus-accent one. The background also moved off near-white to a visibly tinted pale blue, so the whole page has less of a stark, clinical white ground. A monospace typeface was added at this stage for small labels and numerals, as a nod to this being a developer's site, and was later removed again — see Section 4.
 
 What still did **not** change: no stone/marble texture, no curved section dividers, no emoji, no hand-drawn signature. Those stay declined. Two earlier decisions *were* walked back once shipped and shown to fall short: "no new layout structure" (color-only wasn't enough — see Section 2) and "no photograph" (a graphic monogram standing in for a photo read as an odd "tombstone" shape — a real photo doesn't have that problem, see Components).
 
 **Key Characteristics:**
-- Serif + sans + mono: Libre Baskerville still carries the name only, Karla still carries all body/heading text, and a new monospace face carries only small labels — sources and index numerals — three voices, each with one narrow job.
+- Serif + sans: Libre Baskerville carries the name only; Karla carries everything else, including the small labels — sources and index numerals — that a third, monospace face used to hold. Two voices, one narrow job and one broad one.
 - Neutrals carry an ink-blue tint (hue ~250) and the background is visibly tinted rather than near-white; the primary accent is a richer navy (`oklch(0.38 0.10 252)` light, hue ~252) — same hue family as the neutrals, but lifted well clear of near-black ink in lightness and chroma so the two read as distinct colors, not two shades of dark gray.
 - The page reads as distinct rooms (alternating `--background`/`--card` bands), not one continuous flat scroll. Depth still comes from spacing, color, and type — never shadow.
 - Motion is responsive (real feedback on interaction) plus one deliberate page-load stagger on the intro; never choreographed scroll reveals (see Do's and Don'ts).
@@ -82,26 +78,28 @@ Mostly-neutral, ink-blue-tinted ground with one deep navy primary accent used de
 
 **Display Font:** Libre Baskerville Variable (with Georgia, serif fallback) — the personal name only.
 **Body Font:** Karla Variable (with sans-serif fallback) — everything else: bio, section headings, project/reading rows.
-**Mono Font:** Fragment Mono (with ui-monospace, monospace fallback) — small labels only: sources and index numerals.
+There is no third face. A monospace (Fragment Mono) once carried sources and index numerals and was removed: the four-part signature of *display serif + italic emphasis + small mono metadata + ruled separators* is a saturated aesthetic family, and mono is the weakest leg of it to defend here. This is a personal site with a "quiet craftsman" voice, not a technical product — mono as shorthand for "developer" reads as costume rather than meaning. Karla now carries those labels, separated from body copy by weight and figure style instead of by family.
 
-Each stack carries a metric-matched fallback face before its generic — `Karla Fallback`, `Libre Baskerville Fallback`, `Fragment Mono Fallback`, declared in `src/index.css`. These are not new typefaces: each is a locally-installed stand-in (Arial/Helvetica, Georgia, Courier New) re-proportioned with `size-adjust` and ascent/descent overrides so it occupies exactly the space its web font will. Fonts load `font-display: swap`, so without this the first paint uses a differently-proportioned fallback and every line of text shifts when the real font arrives. The percentages are derived from the two fonts' own `unitsPerEm`, ascent, descent, and average character width — computed, never estimated — so they must be recalculated if a family is ever swapped.
+Each stack carries a metric-matched fallback face before its generic — `Karla Fallback` and `Libre Baskerville Fallback`, declared in `src/index.css`. These are not new typefaces: each is a locally-installed stand-in (Arial/Helvetica, Georgia) re-proportioned with `size-adjust` and ascent/descent overrides so it occupies exactly the space its web font will. Fonts load `font-display: swap`, so without this the first paint uses a differently-proportioned fallback and every line of text shifts when the real font arrives. The percentages are derived from the two fonts' own `unitsPerEm`, ascent, descent, and average character width — computed, never estimated — so they must be recalculated if a family is ever swapped.
 
 ### Named Rules
 **The Metric-Matched Fallback Rule.** A web font never sits directly in front of a bare generic. Every family in `theme.css` goes web font → matched fallback face → generic. Adding a family means adding its fallback face too.
 
-**Character:** Three families, three narrow jobs — a classic book-serif for the one display moment, a warm humanist grotesque for everything meant to be read, and a quiet monospace for everything meant to be scanned (labels, numbers, metadata). Fragment Mono was picked over the more common IBM Plex Mono / Space Mono default so the "developer" nod doesn't read as a training-data reflex.
+**Character:** Two families — a classic book-serif for the one display moment, and a warm humanist grotesque for everything else, scanned labels included. The things meant to be scanned separate from the things meant to be read by weight, size, and tabular figures rather than by a change of family. One fewer voice, and the remaining two are further apart.
 
 ### Hierarchy
 - **Display** (700 weight serif, `clamp(3rem, 2rem + 3.5vw, 4.5rem)`, line-height 1.05, `-0.02em`): the name only — "Jeremy" roman, "Walton" italic and colored primary. The ceiling stayed at 4.5rem; the floor and slope rose so the type actually *reaches* it. The previous curve needed a ~1467px window to hit its own maximum, so on every real screen the name rendered well under the size it was specified at.
 - **Headline** (700 weight sans, `1.5rem`–`1.875rem`): "What I'm working on" / "What I'm reading" section headings.
 - **Body** (400 weight sans, `1.125rem`–`1.25rem`, line-height 1.6, full `--foreground`): bio paragraph. Capped at 65ch. Previously mixed to 85% ink — a half-measure that cost contrast and bought nothing.
 - **Row title** (600 weight sans, `1.125rem`): project/reading item titles.
-- **Secondary** (400 weight, `0.875rem`): row descriptions (sans) and sources (mono). One tier, two textures.
-- **Label** (400 weight mono, `0.75rem`): index numerals.
+- **Secondary** (`0.875rem`): row descriptions at 400 and sources at 500. One tier, one size, separated by weight.
+- **Label** (700 weight, `0.875rem`, `tabular-nums`): index numerals. Same size as Secondary, lifted by weight and colour rather than shrunk — tabular figures keep `01` and `02` the same width so the descriptions below stay aligned.
 
 ### Named Rules
 **The Real-Step Rule.** Every adjacent step in the scale is at least 1.25× apart, measured between elements that actually sit together on the page. The scale once ran 14 / 15 / 16 / 18 / 20 / 20 / 24 — seven values inside a 1.7× span, every step under 1.25, which read as one undifferentiated field of text rather than a hierarchy. Descriptions and sources were merged into a single Secondary tier and the row title lifted away from them. Two sizes one pixel apart are not a hierarchy; they are noise. A new size earns its place only by clearing 1.25× from its neighbour.
-**The One Serif Word Rule.** The display serif appears in exactly one place: the personal name. Every heading and body of text is Karla; mono is reserved for labels only. Three typefaces, not two, but each is still a deliberate, narrow accent — none competes with Karla for the reader's attention on actual prose.
+**The One Serif Word Rule.** The display serif appears in exactly one place: the personal name. Everything else on the page is Karla — headings, prose, labels, numerals. Two typefaces, and the serif is a single deliberate accent that never competes with Karla for the reader's attention on actual prose.
+
+**The No Third Voice Rule.** A new typeface is not how this page makes a distinction. Weight, size, colour, and figure style come first; reach for another family only when those four genuinely cannot carry it. A monospace was added here once for "developer" flavour and later removed — it was decoration wearing the costume of meaning.
 
 ## 5. Elevation
 
@@ -186,14 +184,14 @@ Because every themed *color* is already a pair, flipping `color-scheme` *is* the
 
 ### List Row (shared by Projects and Reading List)
 - **Shape:** full-width hairline rows, no card container, no side-stripe, no badge/tag. The hairlines come from `divide-y divide-border` on the list container, so the last row has no trailing rule and no separator element is rendered between rows. `ListRow` renders the row and `ListSection` renders the heading + divided list, so both lists share both pieces and can't drift apart.
-- **Anatomy, all but title optional:** one line holds an optional mono index (Projects only: `01`, `02`…, in primary at full opacity), the title, and an inline mono source prefixed with "— " — all on the same line, wrapping together if the combination is long; an arrow icon (phosphor-animated's `arrow-square-out` — the closest match to the old plain arrow-up-right, since phosphor-animated doesn't have that exact glyph) sits right-aligned on that line. On row hover the arrow turns primary and scales to 125% over 400ms (`group-hover:scale-125`), while its own built-in slip-out animation plays — driven from the row, not the icon, via `useIconHover` (the icon is set `trigger="none"` so the whole row is the hover target, not just the glyph). 400ms is deliberately half the icon's 800ms choreography, so the growth finishes as the arrow reaches the top of its slip-out and doesn't keep growing on the way back. The icon's own motion is small on purpose — the scale is what makes the hover read, so the two shouldn't both be loud. A muted description/note paragraph follows below when present. Reading List rows have no index, so their content sits flush left instead of indented under one.
+- **Anatomy, all but title optional:** one line holds an optional index (Projects only: `01`, `02`…, Karla 700 with tabular figures, in primary at full opacity), the title, and an inline source at Karla 500 prefixed with "— " — all on the same line, wrapping together if the combination is long; an arrow icon (phosphor-animated's `arrow-square-out` — the closest match to the old plain arrow-up-right, since phosphor-animated doesn't have that exact glyph) sits right-aligned on that line. On row hover the arrow turns primary and scales to 125% over 400ms (`group-hover:scale-125`), while its own built-in slip-out animation plays — driven from the row, not the icon, via `useIconHover` (the icon is set `trigger="none"` so the whole row is the hover target, not just the glyph). 400ms is deliberately half the icon's 800ms choreography, so the growth finishes as the arrow reaches the top of its slip-out and doesn't keep growing on the way back. The icon's own motion is small on purpose — the scale is what makes the hover read, so the two shouldn't both be loud. A muted description/note paragraph follows below when present. Reading List rows have no index, so their content sits flush left instead of indented under one.
 - **Why no tags:** reading-list category badges (UI/AI/CSS/Rails, one hardcoded color per category) were tried and dropped — they didn't help a reader decide anything, and they were the one place the two lists' row shapes diverged. Source + title + optional description does the job.
 
 ## 9. Do's and Don'ts
 
 ### Do:
 - **Do** surface the intro and contact/social links early — orient the visitor immediately, the way una.im does.
-- **Do** keep the display serif to the name only; keep mono to labels/numerals only; everything else is Karla.
+- **Do** keep the display serif to the name only; everything else is Karla, labels and numerals included.
 - **Do** let the primary accent (navy) show up deliberately — the surname, link hover/focus, project index numerals, one Section Heading per pair — never as a background wash or a filled chip.
 - **Do** build the page as full-width bands with an inner `max-w-5xl` container, not one centered narrow column top to bottom.
 - **Do** support `prefers-color-scheme` by default with a persisted user override (per PRD theming requirement).
@@ -202,7 +200,7 @@ Because every themed *color* is already a pair, flipping `color-scheme` *is* the
 ### Don't:
 - **Don't** build a corporate resume/portfolio look — no credibility-signaling layout, no "download resume" energy.
 - **Don't** default to a generic SaaS-template look: no gradient-clipped text, no tracked-caps eyebrows above every section, no cream/sand default background chosen "because it's warm."
-- **Don't** use side-stripe borders, glassmorphism, or numbered *section* markers (`01 About / 02 Projects`) as scaffolding — the mono numerals on Projects are a genuine ordered list, not section eyebrows, and that distinction matters.
+- **Don't** use side-stripe borders, glassmorphism, or numbered *section* markers (`01 About / 02 Projects`) as scaffolding — the numerals on Projects are a genuine ordered list, not section eyebrows, and that distinction matters.
 - **Don't** use `animation-timeline: view()` scroll-driven reveals on list rows — verified in-browser to strand content at partial opacity when the timeline doesn't settle on load. The one page-load intro stagger is the only motion on this page.
 - **Don't** bring back category badges/tags on reading-list rows — tried, dropped, didn't earn their space.
 - **Don't** add stone/marble texture, a curved SVG section divider, emoji, a hand-drawn signature graphic, a graphic "hero mark" in place of the real photo, or a filled/outlined chip around a section heading — all tried or considered and dropped. The Profile Photo and Section Heading color/underline variation are the layout personality this system uses; don't add a decorative device on top of them without cutting one first.

@@ -36,9 +36,10 @@
   }
 
   .list-row__leading {
-    font-family: var(--font-mono);
-    font-size: var(--text-xs);
-    line-height: var(--text-xs-leading);
+    font-size: var(--text-sm);
+    line-height: var(--text-sm-leading);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
     color: var(--primary);
   }
 
@@ -50,9 +51,9 @@
   }
 
   .list-row__source {
-    font-family: var(--font-mono);
     font-size: var(--text-sm);
     line-height: var(--text-sm-leading);
+    font-weight: 500;
     color: var(--muted-foreground);
   }
 
