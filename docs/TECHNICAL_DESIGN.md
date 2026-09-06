@@ -29,7 +29,7 @@ Projects and reading list entries live in JSON data files (e.g. `projects.json`,
 
 ## Deployment
 
-GitHub Actions builds the Vite project and publishes to GitHub Pages automatically on push to `main`. No manual deploy step.
+GitHub Actions builds the Vite project and publishes to GitHub Pages automatically on push to `master`. No manual deploy step.
 
 ## Domain
 

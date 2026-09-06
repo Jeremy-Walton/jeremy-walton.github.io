@@ -1,34 +1,52 @@
-# React + TypeScript + Vite
+# jeremy-walton.github.io
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal site for Jeremy Walton — a short bio, what he's working on, and a
+reading list. One scrolling page, no routing, no CMS. Live at
+[www.launchtabs.com](https://www.launchtabs.com).
 
-Currently, two official plugins are available:
+## Commands
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
-
-Note: This will impact Vite dev & build performances.
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```sh
+npm install
+npm run dev      # dev server on :5173
+npm run build    # tsc -b && vite build -> dist/
+npm run lint     # oxlint
+npm run preview  # serve the built dist/
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Stack
+
+React 19 + TypeScript on Vite, with the React Compiler enabled (so `useMemo`
+and `useCallback` are not written by hand). Styling is plain CSS — CSS Modules
+per component, no utility framework. `@` resolves to `src/`.
+
+## Layout
+
+```
+index.html          blocking script that applies a stored theme before paint
+src/
+  main.tsx          root render + ThemeProvider
+  App.tsx           the whole page: hero band, work band, footer
+  theme.css         design tokens on :root, as light-dark() pairs
+  index.css         imports + base rules
+  reset.css         reset
+  components/       one folder per component: index.tsx + *.module.css
+    icons/          animated icons vendored from phosphor-animated.com
+    ui/button/      the only Base UI primitive in use
+  data/             projects.json, reading.json, and their types
+  lib/              theme context, shared hooks
+```
+
+Adding a project or a reading item means editing `src/data/*.json` and pushing.
+
+## Deploy
+
+GitHub Actions builds and publishes `dist/` to GitHub Pages on every push to
+`master`. `public/CNAME` holds the custom domain and must not be removed.
+
+## Docs
+
+- [docs/PRD.md](docs/PRD.md) — what the site is for and what's out of scope
+- [docs/TECHNICAL_DESIGN.md](docs/TECHNICAL_DESIGN.md) — stack decisions
+- [docs/PRODUCT.md](docs/PRODUCT.md) — audience, brand, design principles
+- [docs/DESIGN.md](docs/DESIGN.md) — colors, type, CSS Module conventions
