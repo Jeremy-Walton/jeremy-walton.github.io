@@ -1,17 +1,13 @@
 @import "./reset.css";
 @import "./theme.css";
-@import "./utilities.css";
 @import "@fontsource-variable/karla";
 @import "@fontsource-variable/libre-baskerville";
 @import "@fontsource/fragment-mono";
 
+/* Colors the default focus ring on plain links, which have no module class of
+   their own to draw one. */
 * {
-  border-color: var(--border);
   outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
-}
-
-body {
-  margin: 0;
 }
 
 h1,
@@ -44,6 +40,7 @@ html {
 }
 
 body {
+  margin: 0;
   background-color: var(--background);
   color: var(--foreground);
 }

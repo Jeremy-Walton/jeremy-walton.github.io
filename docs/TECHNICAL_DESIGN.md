@@ -7,7 +7,7 @@ Companion to @PRD.md — this covers the tech stack and implementation details n
 - **Framework**: React (SPA, no routing — single page)
 - **Language**: TypeScript
 - **Build tool**: Vite, static export deployed to GitHub Pages
-- **Styling**: plain CSS, no utility framework. Every component owns a CSS Module (`*.module.css`, native nesting, BEM names) — see DESIGN.md § CSS Modules. Four global files back them: `src/theme.css` (design tokens on `:root`), `src/utilities.css` (semantic layout primitives, modelled on [Optics](https://github.com/RoleModel/optics)), `src/reset.css` (reset), `src/index.css` (imports plus a short base layer).
+- **Styling**: plain CSS, no utility framework. Every component owns a CSS Module (`*.module.css`, native nesting, BEM names) — see DESIGN.md § CSS Modules. Three global files back them: `src/theme.css` (design tokens on `:root`), `src/reset.css` (reset), `src/index.css` (imports plus a short base layer).
 - **Theming**: `color-scheme` plus `light-dark()` tokens, with a `data-theme-mode` attribute on `<html>` for an explicit override — see DESIGN.md § Theming.
 - **UI components**: [Base UI](https://base-ui.com/) primitives, each vendored into `src/components/ui/` and paired with a CSS Module. Only `Button` exists today, carrying a single fixed appearance (see DESIGN.md § Contact Icons).
 - **Linting/formatting**: oxlint

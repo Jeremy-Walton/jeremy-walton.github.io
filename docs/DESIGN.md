@@ -105,7 +105,7 @@ Flat by default — depth comes from spacing, band background color, and the acc
 
 ## 6. CSS Modules
 
-Every component's styling is a `<component>.module.css` beside an `index.tsx` in its own folder; a component with no styling of its own stays a single flat file. Design tokens live in `src/theme.css`, layout primitives in `src/utilities.css`, base rules in `src/index.css`, and the reset in `src/reset.css`. Four rules:
+Every component's styling is a `<component>.module.css` beside an `index.tsx` in its own folder; a component with no styling of its own stays a single flat file. Design tokens live in `src/theme.css`, base rules in `src/index.css`, and the reset in `src/reset.css`. There is no global utility layer — every element that needs layout carries a module class that declares it. Four rules:
 
 **One module per component, all of it.** A `className` is module classes or utility classes, never both on one element. An element with a module class gets every property from that class — layout included. Where two modules need the same handful of declarations, repeat them; three plain lines beat an indirection, and they need no comment justifying themselves.
 
@@ -133,15 +133,7 @@ Every component's styling is a `<component>.module.css` beside an `index.tsx` in
 }
 ```
 
-## 7. Layout Utilities
-
-`src/utilities.css` holds semantic layout primitives, modelled on [Optics](https://github.com/RoleModel/optics): `container`, `stack`, `cluster`, `split`, `flank`, `grid`, `frame`, and `sr-only`. Each names an arrangement rather than a property, so `class="split"` says what the row is, where `flex items-center justify-between gap-4` only says how it is built.
-
-They are for markup that has no module class. **Never combine a utility with a module class on the same element** — that splits one element's styling across two files. If an element needs a module, the module declares its layout too, even where a primitive would have covered it.
-
-Only layout and position live here. No color, typography, padding, or margin utilities — those belong to a component's module (see Section 6). Spacing is one knob: set `--gap` on the element to override a primitive's default.
-
-## 8. Theming
+## 7. Theming
 
 `src/theme.css` declares every token on `:root` as a `light-dark()` pair under `color-scheme: light dark`, so the system preference is the default with no JavaScript involved. An explicit choice is a `data-theme-mode` attribute on `<html>`, and the only thing those blocks change is `color-scheme`:
 
@@ -162,7 +154,7 @@ Because every themed *color* is already a pair, flipping `color-scheme` *is* the
 }
 ```
 
-## 9. Components
+## 8. Components
 
 ### Name / Display Headline
 - **Shape:** no container, plain text.
@@ -190,7 +182,7 @@ Because every themed *color* is already a pair, flipping `color-scheme` *is* the
 - **Anatomy, all but title optional:** one line holds an optional mono index (Projects only: `01`, `02`…, in primary at full opacity), the title, and an inline mono source prefixed with "— " — all on the same line, wrapping together if the combination is long; an arrow icon (phosphor-animated's `arrow-square-out` — the closest match to the old plain arrow-up-right, since phosphor-animated doesn't have that exact glyph) sits right-aligned on that line. On row hover the arrow turns primary and scales to 125% over 400ms (`group-hover:scale-125`), while its own built-in slip-out animation plays — driven from the row, not the icon, via `useIconHover` (the icon is set `trigger="none"` so the whole row is the hover target, not just the glyph). 400ms is deliberately half the icon's 800ms choreography, so the growth finishes as the arrow reaches the top of its slip-out and doesn't keep growing on the way back. The icon's own motion is small on purpose — the scale is what makes the hover read, so the two shouldn't both be loud. A muted description/note paragraph follows below when present. Reading List rows have no index, so their content sits flush left instead of indented under one.
 - **Why no tags:** reading-list category badges (UI/AI/CSS/Rails, one hardcoded color per category) were tried and dropped — they didn't help a reader decide anything, and they were the one place the two lists' row shapes diverged. Source + title + optional description does the job.
 
-## 10. Do's and Don'ts
+## 9. Do's and Don'ts
 
 ### Do:
 - **Do** surface the intro and contact/social links early — orient the visitor immediately, the way una.im does.

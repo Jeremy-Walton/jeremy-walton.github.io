@@ -1,8 +1,8 @@
 import { IntroSection } from "@/components/intro-section";
-import { ListRow } from "./components/list-row";
+import { ListRow } from "@/components/list-row";
+import { ListSection } from "@/components/list-section";
 import { SiteFooter } from "@/components/site-footer";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { ListSection } from "./components/list-section";
 
 import type { Project, ReadingItem } from "@/data/types";
 import projects from "@/data/projects.json";
