@@ -11,16 +11,19 @@
       // Only a stored override needs applying before paint — with no attribute,
       // `color-scheme: light dark` already follows the system preference.
       (function () {
-        var stored = localStorage.getItem("theme");
-        if (stored === "light" || stored === "dark") {
-          document.documentElement.dataset.themeMode = stored;
-        }
+        try {
+          var stored = localStorage.getItem("theme");
+          if (stored === "light" || stored === "dark") {
+            document.documentElement.dataset.themeMode = stored;
+          }
+        } catch (e) {}
       })();
     </script>
-    <script type="module" crossorigin src="/assets/index-DOW_WK0F.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-B1nSCcpI.css">
+    <script type="module" crossorigin src="/assets/index-CicFPhc4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-C2s6nFeD.css">
   </head>
   <body>
+    <noscript><p style="padding: 2rem">This site needs JavaScript to run.</p></noscript>
     <div id="root"></div>
   </body>
 </html>
