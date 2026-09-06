@@ -1,4 +1,4 @@
-import { GithubLogoIcon, LinkedinLogoIcon, XLogoIcon } from "@phosphor-icons/react";
+import { GithubLogo, LinkedinLogo, XLogo } from "@/components/icons/logos";
 import { Button } from "@/components/ui/button";
 import { Envelope } from "@/components/icons/envelope";
 import { FlipPhoto } from "@/components/flip-photo";
@@ -20,9 +20,10 @@ function ContactIcon({ label, href, Icon }: ContactIconProps) {
   const external = !href.startsWith("mailto:");
   return (
     <Button
-      nativeButton={false}
       aria-label={label}
-      render={<a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} />}
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
     >
       <Icon size={16} weight="light" />
     </Button>
@@ -58,9 +59,9 @@ function ContactLinks() {
   return (
     <div data-intro-item style={beat(2)} className={styles["intro__contacts"]}>
       <ContactIcon label="Email" href="mailto:jeremy.patrick.walton@gmail.com" Icon={Envelope} />
-      <ContactIcon label="GitHub" href="https://github.com/Jeremy-Walton" Icon={GithubLogoIcon} />
-      <ContactIcon label="LinkedIn" href="https://www.linkedin.com/in/jeremy-walton/" Icon={LinkedinLogoIcon} />
-      <ContactIcon label="X" href="https://x.com/jeremywalton6th" Icon={XLogoIcon} />
+      <ContactIcon label="GitHub" href="https://github.com/Jeremy-Walton" Icon={GithubLogo} />
+      <ContactIcon label="LinkedIn" href="https://www.linkedin.com/in/jeremy-walton/" Icon={LinkedinLogo} />
+      <ContactIcon label="X" href="https://x.com/jeremywalton6th" Icon={XLogo} />
     </div>
   );
 }

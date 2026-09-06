@@ -1,9 +1,24 @@
-import { Button as ButtonPrimitive } from "@base-ui/react/button"
+import type { MouseEventHandler, ReactNode } from "react"
 
 import styles from "./button.module.css"
 
-function Button(props: Omit<ButtonPrimitive.Props, "className">) {
-  return <ButtonPrimitive {...props} className={styles.button} />
+interface ButtonProps {
+  children: ReactNode
+  "aria-label": string
+  onClick?: MouseEventHandler
+  onMouseEnter?: MouseEventHandler
+  onMouseLeave?: MouseEventHandler
+  href?: string
+  target?: string
+  rel?: string
+}
+
+function Button({ href, target, rel, ...props }: ButtonProps) {
+  return href === undefined ? (
+    <button {...props} type="button" className={styles.button} />
+  ) : (
+    <a {...props} href={href} target={target} rel={rel} className={styles.button} />
+  )
 }
 
 export { Button }

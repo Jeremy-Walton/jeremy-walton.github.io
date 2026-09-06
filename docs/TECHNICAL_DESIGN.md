@@ -9,7 +9,8 @@ Companion to @PRD.md — this covers the tech stack and implementation details n
 - **Build tool**: Vite, static export deployed to GitHub Pages
 - **Styling**: plain CSS, no utility framework. Every component owns a CSS Module (`*.module.css`, native nesting, BEM names) — see DESIGN.md § CSS Modules. Three global files back them: `src/theme.css` (design tokens on `:root`), `src/reset.css` (reset), `src/index.css` (imports plus a short base layer).
 - **Theming**: `color-scheme` plus `light-dark()` tokens, with a `data-theme-mode` attribute on `<html>` for an explicit override — see DESIGN.md § Theming.
-- **UI components**: [Base UI](https://base-ui.com/) primitives, each vendored into `src/components/ui/` and paired with a CSS Module. Only `Button` exists today, carrying a single fixed appearance (see DESIGN.md § Contact Icons).
+- **UI components**: hand-written, no component library. They live in `src/components/ui/`, each paired with a CSS Module. Only `Button` exists today, carrying a single fixed appearance and rendering `<button>` or `<a>` depending on `href` (see DESIGN.md § Contact Icons).
+- **Icons**: no icon package. Everything is Phosphor-derived source vendored into `src/components/icons/` — [phosphor-animated](https://phosphor-animated.com/) components for the envelope and the theme toggle's sun/moon, and Phosphor light-weight paths copied into `logos.tsx` for the GitHub, LinkedIn, and X logos. Both are MIT (see DESIGN.md § Contact Icons).
 - **Linting/formatting**: oxlint
 - **Package manager**: npm
 - **Node version**: 24, pinned in CI
