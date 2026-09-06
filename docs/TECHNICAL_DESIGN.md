@@ -11,6 +11,7 @@ Companion to @PRD.md — this covers the tech stack and implementation details n
 - **Theming**: `color-scheme` plus `light-dark()` tokens, with a `data-theme-mode` attribute on `<html>` for an explicit override — see DESIGN.md § Theming.
 - **UI components**: hand-written, no component library. They live in `src/components/ui/`, each paired with a CSS Module. Only `Button` exists today, carrying a single fixed appearance and rendering `<button>` or `<a>` depending on `href` (see DESIGN.md § Contact Icons).
 - **Icons**: no icon package. Everything is Phosphor-derived source vendored into `src/components/icons/` — [phosphor-animated](https://phosphor-animated.com/) components for the envelope and the theme toggle's sun/moon, and Phosphor light-weight paths copied into `logos.tsx` for the GitHub, LinkedIn, and X logos. Both are MIT (see DESIGN.md § Contact Icons).
+- **Motion**: [Motion](https://motion.dev/) for React, loaded in `main.tsx` through `LazyMotion` with the `domAnimation` feature set. Components import `m` from `motion/react-m`, never `motion` from `motion/react` — `LazyMotion`'s `strict` prop throws if the full component appears anywhere inside, which is what keeps the smaller feature set from being silently undone.
 - **Linting/formatting**: oxlint
 - **Package manager**: npm
 - **Node version**: 24, pinned in CI

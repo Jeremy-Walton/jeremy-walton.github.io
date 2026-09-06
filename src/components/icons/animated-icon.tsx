@@ -20,8 +20,8 @@
  */
 
 import * as React from "react";
+import * as m from "motion/react-m";
 import {
-  motion,
   useReducedMotion,
   type MotionStyle,
   type Transition,
@@ -372,7 +372,7 @@ export const AnimatedIcon = React.forwardRef<AnimatedIconHandle, InternalProps>(
           if (!anim) return React.createElement(tag, { key: renderIndex, ...attrs });
 
           const v = buildVariants(anim, duration, speed, looping);
-          const MotionTag = (motion as unknown as Record<string, React.ElementType>)[tag];
+          const MotionTag = (m as unknown as Record<string, React.ElementType>)[tag];
 
           return (
             <MotionTag
@@ -387,7 +387,7 @@ export const AnimatedIcon = React.forwardRef<AnimatedIconHandle, InternalProps>(
     );
 
     return (
-      <motion.svg
+      <m.svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"
         width={size}
@@ -410,16 +410,16 @@ export const AnimatedIcon = React.forwardRef<AnimatedIconHandle, InternalProps>(
             it. Motion propagates the variant down from the <svg>, so this animates
             with everything else. */}
         {wholeVariants && choreo.whole ? (
-          <motion.g
+          <m.g
             style={originStyle(choreo.whole)}
             variants={{ rest: wholeVariants.rest, active: wholeVariants.active }}
           >
             {drawing}
-          </motion.g>
+          </m.g>
         ) : (
           drawing
         )}
-      </motion.svg>
+      </m.svg>
     );
   },
 );

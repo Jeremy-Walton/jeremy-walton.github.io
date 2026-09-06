@@ -1,4 +1,5 @@
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import * as m from "motion/react-m";
+import { AnimatePresence, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { Sun } from "@/components/icons/sun";
@@ -13,7 +14,7 @@ function IconSwap({ swapKey, children }: { swapKey: string; children: ReactNode 
 
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.span
+      <m.span
         key={swapKey}
         initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, rotate: -90, scale: 0.6 }}
         animate={{ opacity: 1, rotate: 0, scale: 1 }}
@@ -25,7 +26,7 @@ function IconSwap({ swapKey, children }: { swapKey: string; children: ReactNode 
         }
       >
         {children}
-      </motion.span>
+      </m.span>
     </AnimatePresence>
   );
 }
