@@ -8,6 +8,8 @@ import type { Project, ReadingItem } from "@/data/types";
 import projects from "@/data/projects.json";
 import reading from "@/data/reading.json";
 
+import styles from "./App.module.css";
+
 function ProjectList() {
   return (
     <ListSection title="What I'm working on">
@@ -48,13 +50,13 @@ function App() {
         <ThemeToggle />
       </div>
       <main>
-        <section className="bg-background">
-          <div className="page-width py-[clamp(5rem,4rem+3vw,7rem)]">
+        <section className={`${styles["band"]} ${styles["band--hero"]}`}>
+          <div className={styles["band__inner"]}>
             <IntroSection />
           </div>
         </section>
-        <section className="bg-card">
-          <div className="page-width grid gap-16 py-[clamp(4rem,3rem+3vw,6rem)] lg:grid-cols-[1fr_1.3fr] lg:gap-12">
+        <section className={`${styles["band"]} ${styles["band--work"]}`}>
+          <div className={styles["band__inner"]}>
             <ProjectList />
             <ReadingList />
           </div>

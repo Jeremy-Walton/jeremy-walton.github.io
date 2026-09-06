@@ -58,12 +58,6 @@
   --ring: oklch(0.72 0.06 252);
 }
 
-@utility page-width {
-  margin-inline: auto;
-  max-width: var(--container-5xl);
-  padding-inline: --spacing(6);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;

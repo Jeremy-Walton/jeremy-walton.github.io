@@ -105,7 +105,19 @@ Flat by default — depth comes from spacing, band background color, and the acc
 
 ## 6. CSS Modules
 
-Components whose styling outgrows utility classes get a `<component>.module.css` alongside them (see Button, Profile Photo). Two rules:
+Components whose styling outgrows utility classes get a folder with a `<component>.module.css` alongside an `index.tsx`. A component with no module stays a single flat file. Four rules:
+
+**Never mix utilities with a module class on one element.** Once an element has a module class, that class owns every property it needs — layout and spacing included. A half-and-half `className` splits one element's styling across two files for no gain. Never `@apply` to pull a utility in either: it hides real declarations behind a name the CSS file can't show you, and the resolved output is a surprise. Write the properties out. Repeating three declarations across two modules beats an indirection, and they need no comment justifying themselves.
+
+**Utilities are for layout and position only.** How an element sits in its parent and how its children are arranged — `flex`, `grid`, `gap-4`, `items-center`, `fixed`, `top-5`, `z-10`, `min-h-dvh` — can stay a bare utility, because a name adds nothing. The theme toggle keeps `className="flex"` for that reason.
+
+Everything that shapes how a thing *looks* goes in a module — never a utility:
+
+- **Text.** Every `text-*`, `font-*`, `leading-*`, and `tracking-*`. Size, weight, color, and rhythm are the component's voice.
+- **Color and surface.** `bg-*`, `border-*`, `rounded-*`, `shadow-*`.
+- **Padding.** Internal spacing changes the component's own look, not its placement in its parent, so `py-8` is never a utility. This is what retired the old `page-width` utility: it carried `padding-inline`, so every caller needed a module anyway, and its three declarations now sit in the two modules that want them.
+
+Margin and gap are the exception in the spacing family: they position an element against its siblings rather than shape it, so they may stay utilities. Any of the above appearing on an element is a reason to give it a module class, not a utility to leave beside one.
 
 **BEM names.** `.block`, `.block__element`, `.block__element--modifier`. In JSX, reach them with bracket access — `styles["flip-photo__card"]` — since the dashes rule out dot access.
 

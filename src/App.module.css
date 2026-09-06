@@ -1,0 +1,30 @@
+.band {
+  .band__inner {
+    max-width: var(--container-5xl);
+    margin-inline: auto;
+    padding-inline: calc(var(--spacing) * 6);
+  }
+
+  &.band--hero {
+    background-color: var(--background);
+
+    .band__inner {
+      padding-block: clamp(5rem, 4rem + 3vw, 7rem);
+    }
+  }
+
+  &.band--work {
+    background-color: var(--card);
+
+    .band__inner {
+      display: grid;
+      gap: calc(var(--spacing) * 16);
+      padding-block: clamp(4rem, 3rem + 3vw, 6rem);
+
+      @media (width >= 64rem) {
+        grid-template-columns: 1fr 1.3fr;
+        gap: calc(var(--spacing) * 12);
+      }
+    }
+  }
+}
