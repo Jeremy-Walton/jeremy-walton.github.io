@@ -15,18 +15,18 @@ colors:
   primary-dark: "oklch(0.72 0.06 252)"
 typography:
   display:
-    fontFamily: "Libre Baskerville Variable, Georgia, serif"
+    fontFamily: "Libre Baskerville Variable, Libre Baskerville Fallback, Georgia, serif"
     fontSize: "clamp(2.5rem, 1.75rem + 3vw, 4.5rem)"
     fontWeight: 700
     lineHeight: 1.05
     letterSpacing: "-0.01em"
   body:
-    fontFamily: "Karla Variable, sans-serif"
+    fontFamily: "Karla Variable, Karla Fallback, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
   mono:
-    fontFamily: "Fragment Mono, ui-monospace, monospace"
+    fontFamily: "Fragment Mono, Fragment Mono Fallback, ui-monospace, monospace"
     fontSize: "0.8125rem"
     fontWeight: 400
 rounded:
@@ -83,6 +83,11 @@ Mostly-neutral, ink-blue-tinted ground with one deep navy primary accent used de
 **Display Font:** Libre Baskerville Variable (with Georgia, serif fallback) — the personal name only.
 **Body Font:** Karla Variable (with sans-serif fallback) — everything else: bio, section headings, project/reading rows.
 **Mono Font:** Fragment Mono (with ui-monospace, monospace fallback) — small labels only: sources and index numerals.
+
+Each stack carries a metric-matched fallback face before its generic — `Karla Fallback`, `Libre Baskerville Fallback`, `Fragment Mono Fallback`, declared in `src/index.css`. These are not new typefaces: each is a locally-installed stand-in (Arial/Helvetica, Georgia, Courier New) re-proportioned with `size-adjust` and ascent/descent overrides so it occupies exactly the space its web font will. Fonts load `font-display: swap`, so without this the first paint uses a differently-proportioned fallback and every line of text shifts when the real font arrives. The percentages are derived from the two fonts' own `unitsPerEm`, ascent, descent, and average character width — computed, never estimated — so they must be recalculated if a family is ever swapped.
+
+### Named Rules
+**The Metric-Matched Fallback Rule.** A web font never sits directly in front of a bare generic. Every family in `theme.css` goes web font → matched fallback face → generic. Adding a family means adding its fallback face too.
 
 **Character:** Three families, three narrow jobs — a classic book-serif for the one display moment, a warm humanist grotesque for everything meant to be read, and a quiet monospace for everything meant to be scanned (labels, numbers, metadata). Fragment Mono was picked over the more common IBM Plex Mono / Space Mono default so the "developer" nod doesn't read as a training-data reflex.
 

@@ -4,6 +4,33 @@
 @import "@fontsource-variable/libre-baskerville";
 @import "@fontsource/fragment-mono";
 
+@font-face {
+  font-family: "Karla Fallback";
+  src: local("Arial"), local("Helvetica");
+  size-adjust: 102.4%;
+  ascent-override: 89.55%;
+  descent-override: 24.61%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Libre Baskerville Fallback";
+  src: local("Georgia");
+  size-adjust: 115.97%;
+  ascent-override: 83.64%;
+  descent-override: 23.28%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: "Fragment Mono Fallback";
+  src: local("Courier New");
+  size-adjust: 102.98%;
+  ascent-override: 92.25%;
+  descent-override: 24.28%;
+  line-gap-override: 0%;
+}
+
 /* Colors the default focus ring on plain links, which have no module class of
    their own to draw one. */
 * {
