@@ -19,7 +19,8 @@
   .site-footer__link {
     transition: color 150ms;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       color: var(--primary);
     }
   }

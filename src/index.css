@@ -2,6 +2,7 @@
 @import "./theme.css";
 @import "@fontsource-variable/karla";
 @import "@fontsource-variable/libre-baskerville";
+@import "@fontsource-variable/libre-baskerville/wght-italic.css";
 
 @font-face {
   font-family: "Karla Fallback";
@@ -53,7 +54,6 @@ button {
 
 html {
   font-family: var(--font-sans);
-  scroll-behavior: smooth;
 }
 
 body {
@@ -92,9 +92,6 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   [data-intro-item] {
     animation: none !important;
     opacity: 1 !important;
