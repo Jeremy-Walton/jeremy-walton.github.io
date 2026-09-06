@@ -31,7 +31,9 @@
     }
   }
 
-  &:hover .flip-photo__card {
-    transform: rotateY(180deg);
+  @media (hover: hover) {
+    &:hover .flip-photo__card {
+      transform: rotateY(180deg);
+    }
   }
 }
