@@ -7,7 +7,14 @@
   }
 
   &:focus-visible {
-    outline: none;
+    outline: 2px solid var(--ring);
+    outline-offset: calc(var(--spacing) * 2);
+    border-radius: var(--radius);
+  }
+
+  &.list-row:focus-visible,
+  &.list-row:focus-visible + * {
+    border-top-color: transparent;
   }
 
   .list-row__head {
@@ -70,7 +77,8 @@
     color: var(--primary);
   }
 
-  &:hover .list-row__arrow {
+  &:hover .list-row__arrow,
+  &:focus-visible .list-row__arrow {
     color: var(--primary);
     transform: scale(1.25);
   }
