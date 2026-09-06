@@ -46,9 +46,9 @@ function ReadingList() {
 function App() {
   return (
     <div className={styles["page"]}>
-      <div className={styles["page__toggle"]}>
+      <header className={styles["page__toggle"]}>
         <ThemeToggle />
-      </div>
+      </header>
       <main>
         <section className={`${styles["band"]} ${styles["band--hero"]}`}>
           <div className={styles["band__inner"]}>

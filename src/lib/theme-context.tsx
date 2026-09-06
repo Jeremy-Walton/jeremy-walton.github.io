@@ -9,6 +9,23 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
+function readStoredTheme(): Theme | null {
+  try {
+    const stored = localStorage.getItem("theme");
+    return stored === "light" || stored === "dark" ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
+function storeTheme(theme: Theme) {
+  try {
+    localStorage.setItem("theme", theme);
+  } catch {
+    return;
+  }
+}
+
 function readInitialTheme(): Theme {
   const stored = document.documentElement.dataset.themeMode;
   if (stored === "light" || stored === "dark") return stored;
@@ -27,7 +44,7 @@ function ThemeProvider({ children }: { children: ReactNode }) {
 
   // Follow the system preference for as long as the user hasn't overridden it.
   useEffect(() => {
-    if (localStorage.getItem("theme")) return;
+    if (readStoredTheme()) return;
     const media = window.matchMedia("(prefers-color-scheme: dark)");
     const onChange = (e: MediaQueryListEvent) => setTheme(e.matches ? "dark" : "light");
     media.addEventListener("change", onChange);
@@ -35,11 +52,9 @@ function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const toggleTheme = () => {
-    setTheme((prev) => {
-      const next = prev === "dark" ? "light" : "dark";
-      localStorage.setItem("theme", next);
-      return next;
-    });
+    const next = theme === "dark" ? "light" : "dark";
+    storeTheme(next);
+    setTheme(next);
   };
 
   return (

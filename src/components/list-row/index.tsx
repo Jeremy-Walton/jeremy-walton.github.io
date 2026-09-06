@@ -36,6 +36,7 @@ export function ListRow({ href, title, leading, source, description }: ListRowPr
           trigger="none"
           size={16}
           weight="light"
+          aria-hidden="true"
           className={styles["list-row__arrow"]}
         />
       </div>

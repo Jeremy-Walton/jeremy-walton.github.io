@@ -30,6 +30,9 @@
     align-items: baseline;
     column-gap: calc(var(--spacing) * 3);
     row-gap: var(--spacing);
+
+    min-width: 0;
+    overflow-wrap: break-word;
   }
 
   .list-row__leading {
@@ -57,6 +60,10 @@
     margin-top: var(--spacing);
     color: var(--muted-foreground);
     transition: color 400ms ease-out, transform 400ms ease-out;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
   }
 
   .list-row__description {
