@@ -8,13 +8,13 @@
   {
     "title": "LaunchTabs",
     "description": "Browser dashboard for organizing and quickly navigating to your favorite websites.",
-    "url": "https://www.launchtabs.com/home-tab/",
-    "source": "/home-tab"
+    "url": "https://www.launchtabs.com/",
+    "source": "launchtabs.com"
   },
   {
     "title": "LifeContext",
     "description": "An interactive history of your lifetime.",
-    "url": "https://www.launchtabs.com/life-context",
+    "url": "https://www.jeremywalton.dev/life-context",
     "source": "/life-context"
   }
 ]
