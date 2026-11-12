@@ -33,7 +33,7 @@ src/
   components/       one folder per component: index.tsx + *.module.css
     icons/          animated icons vendored from phosphor-animated.com
     ui/button/      the only Base UI primitive in use
-  data/             projects.json, reading.json, and their types
+  data/             projects.json, private-projects.json, reading.json, and their types
   lib/              theme context, shared hooks
 ```
 

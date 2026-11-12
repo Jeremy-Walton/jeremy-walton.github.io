@@ -19,8 +19,9 @@ Friends, peers, and Jeremy's own future self. Content can be personal/informal r
 Single scrolling page with sections:
 1. **About** — short bio only (a few sentences, no resume-style breakdown).
 2. **Projects** — simple list/grid, each entry: title, one-line description, link out (repo/live site).
-3. **Reading List** — curated links list: title, link, source, optional one-line note on why it's worth reading. No per-entry commentary/essays, no tagging/categorization (v1).
-4. **Contact** — simple links/icons (email, GitHub, social), no contact form.
+3. **Private Projects** — same row shape as Projects, under its own heading, for work that is not public yet.
+4. **Reading List** — curated links list: title, link, source, optional one-line note on why it's worth reading. No per-entry commentary/essays, no tagging/categorization (v1).
+5. **Contact** — simple links/icons (email, GitHub, social), no contact form.
 
 ## Features
 - **Theme toggle** — user-switchable dark/light mode.

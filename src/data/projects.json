@@ -16,5 +16,23 @@
     "description": "An interactive history of your lifetime.",
     "url": "https://www.jeremywalton.dev/life-context",
     "source": "/life-context"
+  },
+  {
+    "title": "Piano",
+    "description": "Practice Piano to solidify your understanding",
+    "url": "https://piano.jeremywalton.dev/",
+    "source": "piano.jeremywalton.dev"
+  },
+  {
+    "title": "Genealogy",
+    "description": "Biblical Genealogy to better understand the timeline of history",
+    "url": "https://genealogy.jeremywalton.dev/",
+    "source": "genealogy.jeremywalton.dev"
+  },
+  {
+    "title": "Stardrift Frontier",
+    "description": "Quick drafting, tile placing game you can play with your friends. Coming soon to iOS",
+    "url": "https://stardrift.jeremywalton.dev",
+    "source": "stardrift.jeremywalton.dev"
   }
 ]

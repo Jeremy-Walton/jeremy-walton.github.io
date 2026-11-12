@@ -22,7 +22,7 @@ Companion to @PRD.md — this covers the tech stack and implementation details n
 
 ## Content / Data
 
-Projects and reading list entries live in JSON data files (e.g. `projects.json`, `reading.json`), imported at build time. No Markdown parsing, no CMS. TypeScript types define each entry's shape.
+Projects and reading list entries live in JSON data files (`projects.json`, `private-projects.json`, `reading.json`), imported at build time. No Markdown parsing, no CMS. TypeScript types define each entry's shape.
 
 ## Theming
 

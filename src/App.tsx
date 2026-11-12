@@ -5,15 +5,16 @@ import { SiteFooter } from "@/components/site-footer";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 import type { Project, ReadingItem } from "@/data/types";
+import privateProjects from "@/data/private-projects.json";
 import projects from "@/data/projects.json";
 import reading from "@/data/reading.json";
 
 import styles from "./App.module.css";
 
-function ProjectList() {
+function ProjectList({ title, projects }: { title: string; projects: Project[] }) {
   return (
-    <ListSection title="What I'm working on">
-      {(projects as Project[]).map((project, index) => (
+    <ListSection title={title}>
+      {projects.map((project, index) => (
         <ListRow
           key={project.title}
           href={project.url}
@@ -57,7 +58,10 @@ function App() {
         </section>
         <section className={`${styles["band"]} ${styles["band--work"]}`}>
           <div className={styles["band__inner"]}>
-            <ProjectList />
+            <div className={styles["band__column"]}>
+              <ProjectList title="What I'm working on" projects={projects} />
+              <ProjectList title="What's not public yet" projects={privateProjects} />
+            </div>
             <ReadingList />
           </div>
         </section>
