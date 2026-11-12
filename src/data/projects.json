@@ -1,5 +1,11 @@
 [
   {
+    "title": "Stardrift Frontier",
+    "description": "Quick drafting, tile placing game you can play with your friends. Coming soon to iOS",
+    "url": "https://stardrift.jeremywalton.dev",
+    "source": "stardrift.jeremywalton.dev"
+  },
+  {
     "title": "Optics",
     "description": "RoleModel's design system, built on character, collaboration, and craftsmanship.",
     "url": "https://docs.optics.rolemodel.design/",
@@ -28,11 +34,5 @@
     "description": "Biblical Genealogy to better understand the timeline of history",
     "url": "https://genealogy.jeremywalton.dev/",
     "source": "genealogy.jeremywalton.dev"
-  },
-  {
-    "title": "Stardrift Frontier",
-    "description": "Quick drafting, tile placing game you can play with your friends. Coming soon to iOS",
-    "url": "https://stardrift.jeremywalton.dev",
-    "source": "stardrift.jeremywalton.dev"
   }
 ]
